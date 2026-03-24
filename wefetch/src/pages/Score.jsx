@@ -1,6 +1,10 @@
 import { useRef, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Score.css';
+import {
+  CheckIcon, RocketIcon, PartyIcon, BarChartIcon, LockIcon,
+  TargetIcon, ClipboardIcon, DollarIcon, ZapIcon,
+} from '../components/Icons';
 
 function Section({ children, className = '' }) {
   const ref = useRef(null);
@@ -34,7 +38,7 @@ export default function Score() {
           <div className="score-hero-inner">
 
             <div className="score-content fade-up">
-              <div className="coming-tag">🚀 Coming Soon</div>
+              <div className="coming-tag"><RocketIcon className="inline-icon" /> Coming Soon</div>
               <h1>Check Your<br /><span className="highlight">Sustainability Score</span></h1>
               <p className="score-sub">
                 Find out exactly how prepared your company is for sustainability reporting.
@@ -58,7 +62,7 @@ export default function Score() {
                 </form>
               ) : (
                 <div className="submit-success fade-up">
-                  <span>🎉</span>
+                  <span><PartyIcon /></span>
                   <div>
                     <strong>You're on the list!</strong>
                     <p>We'll email you at <strong>{email}</strong> the moment the score calculator goes live.</p>
@@ -68,14 +72,14 @@ export default function Score() {
 
               <div className="score-bullets fade-up delay-2">
                 {['Free to use', 'Takes under 5 minutes', 'Personalised report', 'No account needed'].map(b => (
-                  <span key={b} className="score-bullet">✅ {b}</span>
+                  <span key={b} className="score-bullet"><CheckIcon className="inline-icon" /> {b}</span>
                 ))}
               </div>
             </div>
 
             <div className="score-visual fade-up delay-2">
               <div className="score-card-preview">
-                <div className="score-card-title">📊 Your Score Preview</div>
+                <div className="score-card-title"><BarChartIcon className="inline-icon" /> Your Score Preview</div>
                 <div className="score-dial-wrap">
                   <div className="score-dial">
                     <div className="dial-number">—</div>
@@ -97,7 +101,7 @@ export default function Score() {
                   ))}
                 </div>
                 <div className="locked-overlay">
-                  <div className="lock-icon">🔒</div>
+                  <div className="lock-icon"><LockIcon /></div>
                   <p>Complete the assessment<br />to unlock your score</p>
                   <span className="launch-tag">Launching Soon</span>
                 </div>
@@ -117,12 +121,12 @@ export default function Score() {
           </div>
           <div className="score-features">
             {[
-              { icon: '📊', title: 'Framework Readiness Score', desc: 'Individual scores across CBAM, BRSR, ESG, and EcoVadis.' },
-              { icon: '🎯', title: 'Gap Analysis', desc: 'Understand exactly where your compliance gaps are.' },
-              { icon: '📋', title: 'Action Plan', desc: 'A prioritized list of next steps to improve your score.' },
-              { icon: '💰', title: 'Cost Estimation', desc: 'Estimated cost of achieving compliance for each framework.' },
-              { icon: '⚡', title: 'Instant Results', desc: 'Get your full report in under 5 minutes, no waiting.' },
-              { icon: '🔒', title: '100% Confidential', desc: 'Your data is never shared or sold to third parties.' },
+              { icon: <BarChartIcon />, title: 'Framework Readiness Score', desc: 'Individual scores across CBAM, BRSR, ESG, and EcoVadis.' },
+              { icon: <TargetIcon />, title: 'Gap Analysis', desc: 'Understand exactly where your compliance gaps are.' },
+              { icon: <ClipboardIcon />, title: 'Action Plan', desc: 'A prioritized list of next steps to improve your score.' },
+              { icon: <DollarIcon />, title: 'Cost Estimation', desc: 'Estimated cost of achieving compliance for each framework.' },
+              { icon: <ZapIcon />, title: 'Instant Results', desc: 'Get your full report in under 5 minutes, no waiting.' },
+              { icon: <LockIcon />, title: '100% Confidential', desc: 'Your data is never shared or sold to third parties.' },
             ].map(({ icon, title, desc }, i) => (
               <div className={`score-feat-card card fade-up delay-${(i % 3) + 1}`} key={title}>
                 <div className="feat-icon">{icon}</div>

@@ -1,6 +1,12 @@
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import './Home.css';
+import {
+  CheckIcon, CrossIcon, BanIcon, AlertTriangleIcon, DollarIcon,
+  UsersIcon, RefreshIcon, TrendUpIcon, ZapIcon, GlobeIcon,
+  TrophyIcon, ClipboardIcon, BarChartIcon, GearIcon, CalendarIcon,
+  CircleDotIcon, ShieldIcon,
+} from '../components/Icons';
 
 /* ---- Reusable scroll-observe wrapper ---- */
 function Section({ children, className = '', id = '' }) {
@@ -39,10 +45,10 @@ export default function Home() {
               Create third-party verification-ready reports without hiring, confusion, or expensive consultants.
             </p>
             <ul className="check-list hero-checks fade-up delay-3">
-              <li><span className="check-icon">✅</span> Dedicated sustainability experts</li>
-              <li><span className="check-icon">✅</span> Reports that don't get rejected</li>
-              <li><span className="check-icon">✅</span> Continuous support — not one-time</li>
-              <li><span className="check-icon">✅</span> Live dashboard to track progress</li>
+              <li><CheckIcon /> Dedicated sustainability experts</li>
+              <li><CheckIcon /> Reports that don't get rejected</li>
+              <li><CheckIcon /> Continuous support — not one-time</li>
+              <li><CheckIcon /> Live dashboard to track progress</li>
             </ul>
             <div className="hero-ctas fade-up delay-4">
               <Link to="/score" className="btn btn-primary btn-lg">Check Your Score →</Link>
@@ -52,7 +58,7 @@ export default function Home() {
           </div>
 
           <div className="hero-card fade-up delay-2">
-            <div className="hero-card-title">📊 Sustainability Dashboard</div>
+            <div className="hero-card-title"><BarChartIcon className="inline-icon" /> Sustainability Dashboard</div>
             <div className="stat-grid">
               {[
                 { num: '₹30L+', label: 'Avg. savings vs hiring' },
@@ -85,10 +91,10 @@ export default function Home() {
           </div>
           <div className="pain-grid">
             {[
-              { icon: '🚫', title: 'No Sustainability Team', desc: 'Most companies don\'t have a dedicated sustainability team, leaving reporting to chance.' },
-              { icon: '⚠️', title: 'Untrained Internal Handling', desc: 'Work is managed by staff without expertise, leading to costly errors and missed requirements.' },
-              { icon: '💸', title: 'High Consultant Costs', desc: 'Consultants charge ₹30L+ per year for one-time work with no continuous support.' },
-              { icon: '❌', title: 'Report Rejections', desc: 'Reports get rejected during verification, wasting time, money, and opportunities.' },
+              { icon: <BanIcon />, title: 'No Sustainability Team', desc: 'Most companies don\'t have a dedicated sustainability team, leaving reporting to chance.' },
+              { icon: <AlertTriangleIcon />, title: 'Untrained Internal Handling', desc: 'Work is managed by staff without expertise, leading to costly errors and missed requirements.' },
+              { icon: <DollarIcon />, title: 'High Consultant Costs', desc: 'Consultants charge ₹30L+ per year for one-time work with no continuous support.' },
+              { icon: <CrossIcon />, title: 'Report Rejections', desc: 'Reports get rejected during verification, wasting time, money, and opportunities.' },
             ].map(({ icon, title, desc }, i) => (
               <div className={`pain-card fade-up delay-${i + 1}`} key={title}>
                 <div className="pain-icon">{icon}</div>
@@ -98,7 +104,7 @@ export default function Home() {
             ))}
           </div>
           <div className="result-banner fade-up">
-            <span>⚡</span>
+            <span><ZapIcon /></span>
             <p><strong>Result:</strong> Loss of time, money, and valuable business opportunities — year after year.</p>
           </div>
         </div>
@@ -113,10 +119,10 @@ export default function Home() {
           <div className="team-grid">
             <div className="team-features">
               {[
-                { icon: '👥', title: 'Dedicated Expert Team', desc: 'Certified sustainability professionals assigned to your company and frameworks.' },
-                { icon: '🔄', title: 'Continuous Reporting Support', desc: 'Not a one-time project. We work all year — collecting data, updating reports, staying compliant.' },
-                { icon: '✅', title: 'Verification-Ready Reports', desc: 'Every report is built to pass third-party verification. No surprises, no rejections.' },
-                { icon: '📈', title: 'Real-Time Tracking Dashboard', desc: 'See progress live. Buyer-ready data available anytime, anywhere.' },
+                { icon: <UsersIcon />, title: 'Dedicated Expert Team', desc: 'Certified sustainability professionals assigned to your company and frameworks.' },
+                { icon: <RefreshIcon />, title: 'Continuous Reporting Support', desc: 'Not a one-time project. We work all year — collecting data, updating reports, staying compliant.' },
+                { icon: <ShieldIcon />, title: 'Verification-Ready Reports', desc: 'Every report is built to pass third-party verification. No surprises, no rejections.' },
+                { icon: <TrendUpIcon />, title: 'Real-Time Tracking Dashboard', desc: 'See progress live. Buyer-ready data available anytime, anywhere.' },
               ].map(({ icon, title, desc }, i) => (
                 <div className={`feature-item fade-up delay-${i + 1}`} key={title}>
                   <div className="feature-icon">{icon}</div>
@@ -128,7 +134,7 @@ export default function Home() {
               ))}
             </div>
             <div className="team-visual fade-up delay-2">
-              <p className="mini-head">📊 Compliance Progress Tracker</p>
+              <p className="mini-head"><BarChartIcon className="inline-icon" /> Compliance Progress Tracker</p>
               {[
                 { label: 'CBAM Reporting', pct: 92 },
                 { label: 'BRSR Compliance', pct: 78 },
@@ -143,7 +149,7 @@ export default function Home() {
                 </div>
               ))}
               <div className="trust-strip" style={{ marginTop: '20px' }}>
-                <span>🟢</span> Team Active &nbsp;·&nbsp; <span>📅</span> Next Report: 14 days
+                <span style={{ color: 'var(--clr-accent)' }}><CircleDotIcon className="inline-icon" /></span> Team Active &nbsp;·&nbsp; <span><CalendarIcon className="inline-icon" /></span> Next Report: 14 days
               </div>
             </div>
           </div>
@@ -186,14 +192,14 @@ export default function Home() {
           </div>
           <div className="services-grid">
             {[
-              { emoji: '🌍', name: 'CBAM Reporting', desc: 'EU Carbon Border Adjustment — compliant reports for exporters.' },
-              { emoji: '🏆', name: 'EcoVadis Support', desc: 'Score improvement strategy, evidence prep & submission support.' },
-              { emoji: '📋', name: 'BRSR Reporting', desc: 'Full Business Responsibility & Sustainability Report for Indian compliance.' },
-              { emoji: '📊', name: 'ESG / GRI Reporting', desc: 'Global standards implementation with investor-ready reports.' },
-              { emoji: '⚙️', name: 'Custom Teams', desc: 'A tailored team built around your framework mix and industry needs.' },
-            ].map(({ emoji, name, desc }, i) => (
+              { icon: <GlobeIcon />, name: 'CBAM Reporting', desc: 'EU Carbon Border Adjustment — compliant reports for exporters.' },
+              { icon: <TrophyIcon />, name: 'EcoVadis Support', desc: 'Score improvement strategy, evidence prep & submission support.' },
+              { icon: <ClipboardIcon />, name: 'BRSR Reporting', desc: 'Full Business Responsibility & Sustainability Report for Indian compliance.' },
+              { icon: <BarChartIcon />, name: 'ESG / GRI Reporting', desc: 'Global standards implementation with investor-ready reports.' },
+              { icon: <GearIcon />, name: 'Custom Teams', desc: 'A tailored team built around your framework mix and industry needs.' },
+            ].map(({ icon, name, desc }, i) => (
               <div className={`service-card card fade-up delay-${(i % 4) + 1}`} key={name}>
-                <span className="service-emoji">{emoji}</span>
+                <span className="service-emoji">{icon}</span>
                 <h4>{name}</h4>
                 <p>{desc}</p>
               </div>
@@ -221,7 +227,7 @@ export default function Home() {
                   { title: 'Simple subscription pricing', desc: 'Predictable annual cost. No hidden fees. Starting at ₹3,49,999/year.' },
                 ].map(({ title, desc }, i) => (
                   <div className={`why-item fade-up delay-${(i % 4) + 1}`} key={title}>
-                    <div className="why-bullet">✅</div>
+                    <div className="why-bullet"><CheckIcon /></div>
                     <div><h4>{title}</h4><p>{desc}</p></div>
                   </div>
                 ))}
@@ -229,8 +235,8 @@ export default function Home() {
             </div>
             <div className="comparison-box fade-up delay-2">
               <div className="comp-head">
-                <div className="comp-bad">❌ Old Way</div>
-                <div className="comp-good">✅ Wefetch</div>
+                <div className="comp-bad"><CrossIcon className="inline-icon" /> Old Way</div>
+                <div className="comp-good"><CheckIcon className="inline-icon" /> Wefetch</div>
               </div>
               {[
                 ['Hire full-time team', 'Subscription team'],
@@ -267,9 +273,9 @@ export default function Home() {
             </div>
           </div>
           <div className="trust-notes fade-up delay-4">
-            <span>✅ No credit card required</span>
-            <span>✅ Setup in days</span>
-            <span>✅ Cancel anytime</span>
+            <span><CheckIcon className="inline-icon" /> No credit card required</span>
+            <span><CheckIcon className="inline-icon" /> Setup in days</span>
+            <span><CheckIcon className="inline-icon" /> Cancel anytime</span>
           </div>
         </div>
       </Section>

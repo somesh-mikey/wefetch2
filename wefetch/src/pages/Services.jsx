@@ -1,6 +1,12 @@
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import './Services.css';
+import {
+  CheckIcon, CrossIcon, GlobeIcon, TrophyIcon, ClipboardIcon,
+  BarChartIcon, GearIcon, UserIcon, HandshakeIcon, TrendDownIcon,
+  AlertTriangleIcon, ArrowRightIcon, DollarIcon, CalendarIcon,
+  StarIcon,
+} from '../components/Icons';
 
 function Section({ children, className = '', id = '' }) {
   const ref = useRef(null);
@@ -20,7 +26,7 @@ const packages = [
   {
     color: '#3b7ef8',
     colorDim: 'rgba(59,126,248,0.1)',
-    emoji: '🌍',
+    icon: <GlobeIcon />,
     name: 'CBAM Virtual Team',
     price: '₹3,49,999',
     period: '/ year',
@@ -30,7 +36,7 @@ const packages = [
   {
     color: '#00c98d',
     colorDim: 'rgba(0,201,141,0.1)',
-    emoji: '🏆',
+    icon: <TrophyIcon />,
     name: 'EcoVadis Team',
     price: 'Custom Pricing',
     period: '',
@@ -40,7 +46,7 @@ const packages = [
   {
     color: '#f5c842',
     colorDim: 'rgba(245,200,66,0.1)',
-    emoji: '📋',
+    icon: <ClipboardIcon />,
     name: 'BRSR Team',
     price: 'Custom Pricing',
     period: '',
@@ -50,7 +56,7 @@ const packages = [
   {
     color: '#a066f5',
     colorDim: 'rgba(160,102,245,0.1)',
-    emoji: '📊',
+    icon: <BarChartIcon />,
     name: 'ESG Team',
     price: 'Custom Pricing',
     period: '',
@@ -60,7 +66,7 @@ const packages = [
   {
     color: '#ff7043',
     colorDim: 'rgba(255,112,67,0.1)',
-    emoji: '⚙️',
+    icon: <GearIcon />,
     name: 'Custom Team',
     price: 'Flexible Pricing',
     period: '',
@@ -99,15 +105,15 @@ export default function Services() {
           </div>
           <div className="prob-grid">
             {[
-              { icon: '👤', title: 'Internal Team', items: ['No specialised expertise', 'One person handling everything', 'High error rate'] },
-              { icon: '🤝', title: 'Consultants', items: ['Expensive (₹30L+ per year)', 'One-time projects only', 'No continuous support'] },
-              { icon: '📉', title: 'The Result', items: ['Reports get rejected', 'Data is outdated', 'Business opportunities lost'] },
+              { icon: <UserIcon />, title: 'Internal Team', items: ['No specialised expertise', 'One person handling everything', 'High error rate'] },
+              { icon: <HandshakeIcon />, title: 'Consultants', items: ['Expensive (₹30L+ per year)', 'One-time projects only', 'No continuous support'] },
+              { icon: <TrendDownIcon />, title: 'The Result', items: ['Reports get rejected', 'Data is outdated', 'Business opportunities lost'] },
             ].map(({ icon, title, items }, i) => (
               <div className={`prob-card fade-up delay-${i + 1}`} key={title}>
                 <div className="prob-icon">{icon}</div>
-                <h3>❌ {title}</h3>
+                <h3><CrossIcon className="inline-icon" /> {title}</h3>
                 <ul className="check-list" style={{ marginTop: '14px' }}>
-                  {items.map(it => <li key={it}><span className="cross-icon">✗</span>{it}</li>)}
+                  {items.map(it => <li key={it}><CrossIcon /> {it}</li>)}
                 </ul>
               </div>
             ))}
@@ -119,17 +125,17 @@ export default function Services() {
       <Section className="risk-section bg-dark-3">
         <div className="container">
           <div className="risk-box fade-up">
-            <h2>⚠️ Why This Is a <span className="highlight">Big Risk</span></h2>
+            <h2><AlertTriangleIcon className="inline-icon" /> Why This Is a <span className="highlight">Big Risk</span></h2>
             <div className="risk-grid">
               <ul className="check-list">
-                <li><span className="cross-icon">✗</span>Buyers expect accurate &amp; verified reports</li>
-                <li><span className="cross-icon">✗</span>Mistakes lead to rejection or costly delays</li>
-                <li><span className="cross-icon">✗</span>Rework means extra cost + lost time</li>
-                <li><span className="cross-icon">✗</span>No real-time data = no business visibility</li>
+                <li><CrossIcon /> Buyers expect accurate & verified reports</li>
+                <li><CrossIcon /> Mistakes lead to rejection or costly delays</li>
+                <li><CrossIcon /> Rework means extra cost + lost time</li>
+                <li><CrossIcon /> No real-time data = no business visibility</li>
               </ul>
               <div className="risk-callout">
-                <p>👉 You don't just need a report</p>
-                <p className="risk-bold">👉 You need a <span className="highlight">system + team</span></p>
+                <p><ArrowRightIcon className="inline-icon" /> You don't just need a report</p>
+                <p className="risk-bold"><ArrowRightIcon className="inline-icon" /> You need a <span className="highlight">system + team</span></p>
               </div>
             </div>
           </div>
@@ -145,19 +151,19 @@ export default function Services() {
           </div>
           <div className="solution-grid">
             <div className="solution-col-bad fade-up delay-1">
-              <h4 style={{ color: 'var(--clr-danger)', marginBottom: '16px' }}>❌ Wefetch Replaces</h4>
+              <h4 style={{ color: 'var(--clr-danger)', marginBottom: '16px' }}><CrossIcon className="inline-icon" /> Wefetch Replaces</h4>
               <ul className="check-list">
-                <li><span className="cross-icon">✗</span>Hiring a full-time team</li>
-                <li><span className="cross-icon">✗</span>Repeated consulting engagements</li>
+                <li><CrossIcon /> Hiring a full-time team</li>
+                <li><CrossIcon /> Repeated consulting engagements</li>
               </ul>
             </div>
             <div className="solution-col-good fade-up delay-2">
-              <h4 style={{ color: 'var(--clr-accent)', marginBottom: '16px' }}>✅ With</h4>
+              <h4 style={{ color: 'var(--clr-accent)', marginBottom: '16px' }}><CheckIcon className="inline-icon" /> With</h4>
               <ul className="check-list">
-                <li><span className="check-icon">✓</span>A dedicated expert team</li>
-                <li><span className="check-icon">✓</span>Continuous reporting support</li>
-                <li><span className="check-icon">✓</span>Real-time dashboard</li>
-                <li><span className="check-icon">✓</span>Verification-ready reports</li>
+                <li><CheckIcon /> A dedicated expert team</li>
+                <li><CheckIcon /> Continuous reporting support</li>
+                <li><CheckIcon /> Real-time dashboard</li>
+                <li><CheckIcon /> Verification-ready reports</li>
               </ul>
             </div>
           </div>
@@ -175,7 +181,7 @@ export default function Services() {
                 'Buyer-ready data anytime',
               ].map(item => (
                 <div className="get-item" key={item}>
-                  <span className="check-icon">✅</span>
+                  <CheckIcon />
                   <span>{item}</span>
                 </div>
               ))}
@@ -193,22 +199,22 @@ export default function Services() {
             <p style={{ maxWidth: '440px', margin: '10px auto 0' }}>Transparent, subscription-based pricing — no hidden consultant fees.</p>
           </div>
           <div className="pricing-grid">
-            {packages.map(({ color, colorDim, emoji, name, price, period, badge, includes, featured }, i) => (
+            {packages.map(({ color, colorDim, icon, name, price, period, badge, includes, featured }, i) => (
               <div
                 className={`pricing-card fade-up delay-${(i % 3) + 1} ${featured ? 'pricing-featured' : ''}`}
                 key={name}
                 style={{ '--pkg-color': color, '--pkg-dim': colorDim }}
               >
-                {featured && <div className="featured-badge">🌟 Most Popular</div>}
+                {featured && <div className="featured-badge"><StarIcon className="inline-icon" /> Most Popular</div>}
                 <div className="pkg-header">
-                  <span className="pkg-emoji">{emoji}</span>
+                  <span className="pkg-emoji">{icon}</span>
                   <h3 className="pkg-name">{name}</h3>
                   <div className="pkg-badge">{badge}</div>
                   <div className="pkg-price">{price}<span className="pkg-period">{period}</span></div>
                 </div>
                 <ul className="pkg-includes">
                   {includes.map(item => (
-                    <li key={item}><span style={{ color }}>✓</span> {item}</li>
+                    <li key={item}><span style={{ color, display: 'inline-flex', alignItems: 'center', marginRight: '8px' }}><CheckIcon /></span> {item}</li>
                   ))}
                 </ul>
                 <Link to="/score" className="btn pkg-btn">Get Started →</Link>
@@ -227,11 +233,11 @@ export default function Services() {
           </div>
           <div className="why-srv-grid">
             {[
-              { stat: '₹20–40L', label: 'Saved vs hiring a team', icon: '💰' },
-              { stat: '0', label: 'Need to build internal team', icon: '🚫' },
-              { stat: '100%', label: 'Reports ready for verification', icon: '✅' },
-              { stat: '365', label: 'Days/year of active support', icon: '📅' },
-              { stat: 'Live', label: 'Real-time compliance data', icon: '📊' },
+              { stat: '₹20–40L', label: 'Saved vs hiring a team', icon: <DollarIcon /> },
+              { stat: '0', label: 'Need to build internal team', icon: <CrossIcon /> },
+              { stat: '100%', label: 'Reports ready for verification', icon: <CheckIcon /> },
+              { stat: '365', label: 'Days/year of active support', icon: <CalendarIcon /> },
+              { stat: 'Live', label: 'Real-time compliance data', icon: <BarChartIcon /> },
             ].map(({ stat, label, icon }, i) => (
               <div className={`why-srv-card card fade-up delay-${(i % 4) + 1}`} key={label}>
                 <div className="why-srv-icon">{icon}</div>
