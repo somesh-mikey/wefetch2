@@ -29,94 +29,69 @@ export default function Home() {
 
       {/* ===== HERO ===== */}
       <Section className="hero">
-        <div className="hero-inner container">
+        <div className="hero-inner container align-center text-center">
           <div className="hero-content">
-            <div className="hero-eyebrow fade-up">
-              <span className="pulse-dot" />
-              Sustainability as a Service
-            </div>
             <h1 className="fade-up delay-1">
-              Don't Hire a<br />
-              <span className="highlight">Sustainability Team.</span><br />
+              Don't Hire a <span className="highlight">Sustainability Team.</span><br />
               Subscribe to One.
             </h1>
-            <p className="hero-sub fade-up delay-2">
+            <p className="hero-sub fade-up delay-2" style={{ margin: '0 auto 32px auto' }}>
               Save ₹30L+ and get expert-led sustainability reporting all year round.
               Create third-party verification-ready reports without hiring, confusion, or expensive consultants.
             </p>
-            <ul className="check-list hero-checks fade-up delay-3">
-              <li><CheckIcon /> Dedicated sustainability experts</li>
+            <ul className="check-list hero-checks fade-up delay-3" style={{ justifyContent: 'center', display: 'flex', flexWrap: 'wrap', gap: '16px', maxWidth: '850px', margin: '0 auto 36px auto' }}>
+              <li><CheckIcon /> Dedicated experts</li>
               <li><CheckIcon /> Reports that don't get rejected</li>
-              <li><CheckIcon /> Continuous support — not one-time</li>
+              <li><CheckIcon /> Continuous support</li>
               <li><CheckIcon /> Live dashboard to track progress</li>
             </ul>
-            <div className="hero-ctas fade-up delay-4">
-              <Link to="/score" className="btn btn-primary btn-lg">Check Your Score →</Link>
-              <Link to="/services" className="btn btn-outline btn-lg">Book a Demo</Link>
+            <div className="hero-ctas fade-up delay-4" style={{ display: 'flex', justifyContent: 'center', gap: '16px', margin: '0 auto 20px auto' }}>
+              <Link to="/services" className="btn btn-outline btn-lg" style={{ backgroundColor: 'transparent', color: 'var(--clr-text)', border: '1px solid var(--clr-border)' }}>Check Your Score</Link>
+              <Link to="/services#book-demo" className="btn btn-primary btn-lg" style={{ backgroundColor: '#0f6b5c', color: '#fff' }}>Book a Demo</Link>
             </div>
-            <p className="cta-hint fade-up delay-4">See how ready your company is · No credit card required</p>
+            <p className="cta-hint fade-up delay-4" style={{ marginBottom: '60px' }}>See how ready your company is · No credit card required</p>
           </div>
 
-          <div className="hero-card fade-up delay-2">
-            <div className="hero-card-title"><BarChartIcon className="inline-icon" /> Sustainability Dashboard</div>
-            <div className="stat-grid">
-              {[
-                { num: '₹30L+', label: 'Avg. savings vs hiring' },
-                { num: '100%', label: 'Verification ready' },
-                { num: '5', label: 'Frameworks covered' },
-                { num: '0', label: 'Rejected reports' },
-              ].map(({ num, label }) => (
-                <div className="stat-item" key={label}>
-                  <div className="stat-num">{num}</div>
-                  <div className="stat-label">{label}</div>
+          {/* Abstract green shapes in the background of dashboard */}
+          <div className="hero-dashboard-wrap fade-up delay-3">
+            <div className="hero-blob left-blob"></div>
+            <div className="hero-blob right-blob"></div>
+
+            <div className="hero-card dashboard-hero-card">
+              <div className="hero-card-header">
+                 <div className="hero-mac-dots"><span className="red"></span><span className="yellow"></span><span className="green"></span></div>
+                 <div className="hero-card-title-center"><BarChartIcon className="inline-icon" /> Sustainability Dashboard</div>
+              </div>
+              <div className="stat-grid" style={{ gridTemplateColumns: 'repeat(4, 1fr)' }}>
+                {[
+                  { num: '₹30L+', label: 'Avg. savings vs hiring' },
+                  { num: '100%', label: 'Verification ready' },
+                  { num: '5', label: 'Frameworks covered' },
+                  { num: '0', label: 'Rejected reports' },
+                ].map(({ num, label }) => (
+                  <div className="stat-item text-left" key={label} style={{ background: '#fff', border: '1px solid var(--clr-border)' }}>
+                    <div className="stat-num">{num}</div>
+                    <div className="stat-label">{label}</div>
+                  </div>
+                ))}
+              </div>
+              <div className="trust-strip justify-center">
+                <div className="avatar-stack">
+                  {['AK','SR','PM'].map(i => <div key={i} className="avatar">{i}</div>)}
                 </div>
-              ))}
-            </div>
-            <div className="trust-strip">
-              <div className="avatar-stack">
-                {['AK','SR','PM'].map(i => <div key={i} className="avatar">{i}</div>)}
+                Expert team activated
               </div>
-              Expert team activated
             </div>
           </div>
         </div>
       </Section>
 
-      {/* ===== SECTION 2 – Hidden Cost ===== */}
-      <Section className="pain-section bg-dark-3">
+      {/* ===== SECTION 2 – Virtual Team ===== */}
+      <Section className="team-section" style={{ paddingTop: '80px', paddingBottom: '80px' }}>
         <div className="container">
-          <div className="text-center fade-up">
-            <span className="section-label">The Problem</span>
-            <h2>The Hidden Cost of Sustainability<br />Done the <span className="highlight">Wrong Way</span></h2>
-          </div>
-          <div className="pain-grid">
-            {[
-              { icon: <BanIcon />, title: 'No Sustainability Team', desc: 'Most companies don\'t have a dedicated sustainability team, leaving reporting to chance.' },
-              { icon: <AlertTriangleIcon />, title: 'Untrained Internal Handling', desc: 'Work is managed by staff without expertise, leading to costly errors and missed requirements.' },
-              { icon: <DollarIcon />, title: 'High Consultant Costs', desc: 'Consultants charge ₹30L+ per year for one-time work with no continuous support.' },
-              { icon: <CrossIcon />, title: 'Report Rejections', desc: 'Reports get rejected during verification, wasting time, money, and opportunities.' },
-            ].map(({ icon, title, desc }, i) => (
-              <div className={`pain-card fade-up delay-${i + 1}`} key={title}>
-                <div className="pain-icon">{icon}</div>
-                <h3>{title}</h3>
-                <p>{desc}</p>
-              </div>
-            ))}
-          </div>
-          <div className="result-banner fade-up">
-            <span><ZapIcon /></span>
-            <p><strong>Result:</strong> Loss of time, money, and valuable business opportunities — year after year.</p>
-          </div>
-        </div>
-      </Section>
-
-      {/* ===== SECTION 3 – Virtual Team ===== */}
-      <Section className="team-section bg-dark-2">
-        <div className="container">
-          <span className="section-label fade-up">The Solution</span>
-          <h2 className="fade-up delay-1">Meet Your Virtual<br /><span className="highlight">Sustainability Team</span></h2>
-          <p className="team-sub fade-up delay-2">Wefetch gives you a complete sustainability team — without hiring or repeated consulting costs. One subscription, all year round.</p>
-          <div className="team-grid">
+          <h2 className="fade-up">Meet Your Virtual<br /><span className="highlight">Sustainability Team</span></h2>
+          <p className="team-sub fade-up delay-1">Wefetch gives you a complete sustainability team — without hiring or repeated consulting costs. One subscription, all year round.</p>
+          <div className="team-grid mt-4">
             <div className="team-features">
               {[
                 { icon: <UsersIcon />, title: 'Dedicated Expert Team', desc: 'Certified sustainability professionals assigned to your company and frameworks.' },
@@ -182,31 +157,30 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* ===== SECTION 5 – Services ===== */}
-      <Section className="services-section bg-dark-2">
+      {/* ===== SECTION 5 – Testimonials ===== */}
+      <Section className="testimonial-section bg-dark-2">
         <div className="container">
-          <div className="text-center fade-up">
-            <span className="section-label">What We Cover</span>
-            <h2>Our <span className="highlight">Services</span></h2>
-            <p className="section-sub">End-to-end sustainability reporting across all major frameworks.</p>
-          </div>
-          <div className="services-grid">
-            {[
-              { icon: <GlobeIcon />, name: 'CBAM Reporting', desc: 'EU Carbon Border Adjustment — compliant reports for exporters.' },
-              { icon: <TrophyIcon />, name: 'EcoVadis Support', desc: 'Score improvement strategy, evidence prep & submission support.' },
-              { icon: <ClipboardIcon />, name: 'BRSR Reporting', desc: 'Full Business Responsibility & Sustainability Report for Indian compliance.' },
-              { icon: <BarChartIcon />, name: 'ESG / GRI Reporting', desc: 'Global standards implementation with investor-ready reports.' },
-              { icon: <GearIcon />, name: 'Custom Teams', desc: 'A tailored team built around your framework mix and industry needs.' },
-            ].map(({ icon, name, desc }, i) => (
-              <div className={`service-card card fade-up delay-${(i % 4) + 1}`} key={name}>
-                <span className="service-emoji">{icon}</span>
-                <h4>{name}</h4>
-                <p>{desc}</p>
+          <div className="testimonial-container fade-up">
+            <div className="testimonial-quote-box">
+              <h3 className="testimonial-quote">
+                "In the IT function, Lenovo is a big part of our sustainability drive. From energy-efficient products to sustainable packaging to offsetting carbon emissions, Lenovo is helping us become more sustainable."
+              </h3>
+              <div className="testimonial-author">Mark Connop</div>
+              <div className="testimonial-role">Client Services Manager, University of Birmingham</div>
+            </div>
+            
+            <div className="testimonial-glance">
+              <h3>At-a-Glance</h3>
+              <div className="glance-list">
+                <div className="glance-item"><strong>Customer:</strong> University of Birmingham</div>
+                <div className="glance-item"><strong>Industry:</strong> <span className="glance-link">Education</span></div>
+                <div className="glance-item"><strong>Product Family:</strong> <span className="glance-link">Desktops</span> <span className="glance-link">Laptops</span></div>
+                <div className="glance-item"><strong>Services:</strong> <span className="glance-link">Sustainability Services</span></div>
+                <div className="glance-item"><strong>Region:</strong> <span className="glance-link">Europe</span></div>
+                <div className="glance-item"><strong>Processor:</strong> <span className="glance-link">AMD</span> <span className="glance-link">Intel</span></div>
+                <div className="glance-item" style={{lineHeight: 1.5}}><strong>Topic:</strong> <span className="glance-link">Flexibility and Agility</span> <span className="glance-link">Productivity and Collaboration</span> <span className="glance-link">Sustainability</span></div>
               </div>
-            ))}
-          </div>
-          <div className="text-center" style={{ marginTop: '44px' }}>
-            <Link to="/services" className="btn btn-outline">View All Packages &amp; Pricing →</Link>
+            </div>
           </div>
         </div>
       </Section>

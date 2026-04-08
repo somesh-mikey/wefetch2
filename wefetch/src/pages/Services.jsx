@@ -1,12 +1,7 @@
-import { useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect, useRef, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import './Services.css';
-import {
-  CheckIcon, CrossIcon, GlobeIcon, TrophyIcon, ClipboardIcon,
-  BarChartIcon, GearIcon, UserIcon, HandshakeIcon, TrendDownIcon,
-  AlertTriangleIcon, ArrowRightIcon, DollarIcon, CalendarIcon,
-  StarIcon,
-} from '../components/Icons';
+import { CheckIcon, CalendarIcon, BarChartIcon, GlobeIcon, TrophyIcon, ClipboardIcon, ArrowRightIcon } from '../components/Icons';
 
 function Section({ children, className = '', id = '' }) {
   const ref = useRef(null);
@@ -15,261 +10,363 @@ function Section({ children, className = '', id = '' }) {
     if (!el) return;
     const obs = new IntersectionObserver(entries => {
       entries.forEach(e => { if (e.isIntersecting) e.target.querySelectorAll('.fade-up').forEach(f => f.classList.add('visible')); });
-    }, { threshold: 0.07, rootMargin: '0px 0px -40px 0px' });
+    }, { threshold: 0.04, rootMargin: '0px 0px -40px 0px' });
     obs.observe(el);
     return () => obs.disconnect();
   }, []);
   return <section ref={ref} className={className} id={id}>{children}</section>;
 }
 
-const packages = [
-  {
-    color: '#3b7ef8',
-    colorDim: 'rgba(59,126,248,0.1)',
-    icon: <GlobeIcon />,
-    name: 'CBAM Virtual Team',
-    price: '₹3,49,999',
-    period: '/ year',
-    badge: 'Best for EU Exporters',
-    includes: ['Carbon data collection', '3 CBAM reports per year', 'Emissions calculation', 'Dashboard access', 'Basic decarbonization support'],
-  },
-  {
-    color: '#00c98d',
-    colorDim: 'rgba(0,201,141,0.1)',
-    icon: <TrophyIcon />,
-    name: 'EcoVadis Team',
-    price: 'Custom Pricing',
-    period: '',
-    badge: 'Best for Supplier Rating',
-    includes: ['Documentation support', 'Score improvement strategy', 'Evidence preparation', 'Submission support', 'Continuous tracking'],
-  },
-  {
-    color: '#f5c842',
-    colorDim: 'rgba(245,200,66,0.1)',
-    icon: <ClipboardIcon />,
-    name: 'BRSR Team',
-    price: 'Custom Pricing',
-    period: '',
-    badge: 'Best for Indian Compliance',
-    includes: ['Full BRSR reporting', 'Data collection & validation', 'Policy & documentation', 'Submission-ready reports', 'Regulatory updates'],
-  },
-  {
-    color: '#a066f5',
-    colorDim: 'rgba(160,102,245,0.1)',
-    icon: <BarChartIcon />,
-    name: 'ESG Team',
-    price: 'Custom Pricing',
-    period: '',
-    badge: 'Best for Global Investors',
-    includes: ['ESG framework reporting', 'GRI standards implementation', 'Impact metrics', 'Investor-ready reports', 'Continuous monitoring'],
-  },
-  {
-    color: '#ff7043',
-    colorDim: 'rgba(255,112,67,0.1)',
-    icon: <GearIcon />,
-    name: 'Custom Team',
-    price: 'Flexible Pricing',
-    period: '',
-    badge: 'Best for Multiple Frameworks',
-    includes: ['CBAM + ESG + BRSR combination', 'Industry-specific setup', 'Dedicated account team', 'Full sustainability management', 'Custom dashboard'],
-    featured: true,
-  },
-];
-
 export default function Services() {
+  const location = useLocation();
+  const [activeTab, setActiveTab] = useState(0);
+
+  // Sync tab state with router state if navigated from Mega Menu
+  useEffect(() => {
+    if (location.state && typeof location.state.tab === 'number') {
+      setActiveTab(location.state.tab);
+      window.scrollTo(0, 0);
+    }
+  }, [location.state]);
+
+  const tabs = [
+    { title: 'CBAM V-Team', icon: <GlobeIcon className="inline-icon" /> },
+    { title: 'EcoVadis V-Team', icon: <TrophyIcon className="inline-icon" /> },
+    { title: 'ESG Virtual Teams', icon: <ClipboardIcon className="inline-icon" /> }
+  ];
+
   return (
-    <main className="services-page">
-
-      {/* ===== HERO ===== */}
-      <Section className="srv-hero">
-        <div className="container">
-          <div className="srv-hero-content">
-            <div className="hero-eyebrow fade-up"><span className="pulse-dot" />Services &amp; Pricing</div>
-            <h1 className="fade-up delay-1">Fix Your Sustainability<br /><span className="highlight">Reporting — The Right Way</span></h1>
-            <p className="fade-up delay-2">Stop struggling with errors, delays, and rejected reports. Get a dedicated sustainability team that works with you all year.</p>
-            <div className="hero-ctas fade-up delay-3">
-              <Link to="/score" className="btn btn-primary btn-lg">Check Your Score →</Link>
-              <a href="#book-demo" className="btn btn-outline btn-lg">Book a Demo</a>
-            </div>
-          </div>
-        </div>
-      </Section>
-
-      {/* ===== REAL PROBLEM ===== */}
-      <Section className="problem-section bg-dark-2">
-        <div className="container">
-          <div className="text-center fade-up">
-            <span className="section-label">The Real Problem</span>
-            <h2>Why Companies Struggle with <span className="highlight">Sustainability</span></h2>
-            <p style={{ maxWidth: '480px', margin: '10px auto 0' }}>Most companies try to manage sustainability in 3 ways — and all 3 fail.</p>
-          </div>
-          <div className="prob-grid">
-            {[
-              { icon: <UserIcon />, title: 'Internal Team', items: ['No specialised expertise', 'One person handling everything', 'High error rate'] },
-              { icon: <HandshakeIcon />, title: 'Consultants', items: ['Expensive (₹30L+ per year)', 'One-time projects only', 'No continuous support'] },
-              { icon: <TrendDownIcon />, title: 'The Result', items: ['Reports get rejected', 'Data is outdated', 'Business opportunities lost'] },
-            ].map(({ icon, title, items }, i) => (
-              <div className={`prob-card fade-up delay-${i + 1}`} key={title}>
-                <div className="prob-icon">{icon}</div>
-                <h3><CrossIcon className="inline-icon" /> {title}</h3>
-                <ul className="check-list" style={{ marginTop: '14px' }}>
-                  {items.map(it => <li key={it}><CrossIcon /> {it}</li>)}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </div>
-      </Section>
-
-      {/* ===== RISK CALLOUT ===== */}
-      <Section className="risk-section bg-dark-3">
-        <div className="container">
-          <div className="risk-box fade-up">
-            <h2><AlertTriangleIcon className="inline-icon" /> Why This Is a <span className="highlight">Big Risk</span></h2>
-            <div className="risk-grid">
-              <ul className="check-list">
-                <li><CrossIcon /> Buyers expect accurate & verified reports</li>
-                <li><CrossIcon /> Mistakes lead to rejection or costly delays</li>
-                <li><CrossIcon /> Rework means extra cost + lost time</li>
-                <li><CrossIcon /> No real-time data = no business visibility</li>
-              </ul>
-              <div className="risk-callout">
-                <p><ArrowRightIcon className="inline-icon" /> You don't just need a report</p>
-                <p className="risk-bold"><ArrowRightIcon className="inline-icon" /> You need a <span className="highlight">system + team</span></p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </Section>
-
-      {/* ===== SOLUTION ===== */}
-      <Section className="solution-section bg-dark">
-        <div className="container">
-          <div className="text-center fade-up">
-            <span className="section-label">The Solution</span>
-            <h2>A Complete Sustainability Team —<br /><span className="highlight">On Subscription</span></h2>
-          </div>
-          <div className="solution-grid">
-            <div className="solution-col-bad fade-up delay-1">
-              <h4 style={{ color: 'var(--clr-danger)', marginBottom: '16px' }}><CrossIcon className="inline-icon" /> Wefetch Replaces</h4>
-              <ul className="check-list">
-                <li><CrossIcon /> Hiring a full-time team</li>
-                <li><CrossIcon /> Repeated consulting engagements</li>
-              </ul>
-            </div>
-            <div className="solution-col-good fade-up delay-2">
-              <h4 style={{ color: 'var(--clr-accent)', marginBottom: '16px' }}><CheckIcon className="inline-icon" /> With</h4>
-              <ul className="check-list">
-                <li><CheckIcon /> A dedicated expert team</li>
-                <li><CheckIcon /> Continuous reporting support</li>
-                <li><CheckIcon /> Real-time dashboard</li>
-                <li><CheckIcon /> Verification-ready reports</li>
-              </ul>
-            </div>
-          </div>
-          <div className="solution-banner fade-up delay-3">
-            One team. All frameworks. All year.
-          </div>
-          <div className="what-you-get fade-up delay-4">
-            <h3 style={{ marginBottom: '20px' }}>What You <span className="highlight">Get</span></h3>
-            <div className="get-grid">
-              {[
-                'End-to-end reporting (data → submission)',
-                'Framework-specific experts',
-                'Continuous updates — not one-time reports',
-                'Lower rejection risk',
-                'Buyer-ready data anytime',
-              ].map(item => (
-                <div className="get-item" key={item}>
-                  <CheckIcon />
-                  <span>{item}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </Section>
-
-      {/* ===== PRICING PACKAGES ===== */}
-      <Section className="pricing-section bg-dark-2" id="book-demo">
-        <div className="container">
-          <div className="text-center fade-up">
-            <span className="section-label">Pricing</span>
-            <h2>Choose the Team <span className="highlight">You Need</span></h2>
-            <p style={{ maxWidth: '440px', margin: '10px auto 0' }}>Transparent, subscription-based pricing — no hidden consultant fees.</p>
-          </div>
-          <div className="pricing-grid">
-            {packages.map(({ color, colorDim, icon, name, price, period, badge, includes, featured }, i) => (
-              <div
-                className={`pricing-card fade-up delay-${(i % 3) + 1} ${featured ? 'pricing-featured' : ''}`}
-                key={name}
-                style={{ '--pkg-color': color, '--pkg-dim': colorDim }}
-              >
-                {featured && <div className="featured-badge"><StarIcon className="inline-icon" /> Most Popular</div>}
-                <div className="pkg-header">
-                  <span className="pkg-emoji">{icon}</span>
-                  <h3 className="pkg-name">{name}</h3>
-                  <div className="pkg-badge">{badge}</div>
-                  <div className="pkg-price">{price}<span className="pkg-period">{period}</span></div>
-                </div>
-                <ul className="pkg-includes">
-                  {includes.map(item => (
-                    <li key={item}><span style={{ color, display: 'inline-flex', alignItems: 'center', marginRight: '8px' }}><CheckIcon /></span> {item}</li>
-                  ))}
-                </ul>
-                <Link to="/score" className="btn pkg-btn">Get Started →</Link>
-              </div>
-            ))}
-          </div>
-        </div>
-      </Section>
-
-      {/* ===== WHY CHOOSE WEFETCH ===== */}
-      <Section className="why-section-srv bg-dark">
-        <div className="container">
-          <div className="text-center fade-up">
-            <span className="section-label">Why Wefetch</span>
-            <h2>Why Companies <span className="highlight">Choose Wefetch</span></h2>
-          </div>
-          <div className="why-srv-grid">
-            {[
-              { stat: '₹20–40L', label: 'Saved vs hiring a team', icon: <DollarIcon /> },
-              { stat: '0', label: 'Need to build internal team', icon: <CrossIcon /> },
-              { stat: '100%', label: 'Reports ready for verification', icon: <CheckIcon /> },
-              { stat: '365', label: 'Days/year of active support', icon: <CalendarIcon /> },
-              { stat: 'Live', label: 'Real-time compliance data', icon: <BarChartIcon /> },
-            ].map(({ stat, label, icon }, i) => (
-              <div className={`why-srv-card card fade-up delay-${(i % 4) + 1}`} key={label}>
-                <div className="why-srv-icon">{icon}</div>
-                <div className="why-srv-stat">{stat}</div>
-                <div className="why-srv-label">{label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </Section>
-
-      {/* ===== FINAL CTA ===== */}
-      <Section className="srv-final-cta">
+    <main className="services-page" style={{ paddingTop: '100px' }}>
+      
+      {/* ===== HERO COMPONENT ===== */}
+      <Section className="srv-hero" style={{ minHeight: 'auto', padding: '60px 24px 40px' }}>
         <div className="container text-center">
-          <span className="section-label fade-up">Get Started Today</span>
-          <h2 className="fade-up delay-1">Don't Risk Rejection.<br /><span className="highlight">Don't Waste Money.</span></h2>
-          <p className="fade-up delay-2" style={{ maxWidth: '520px', margin: '14px auto 40px' }}>
-            Get your sustainability reporting done right — from day one.
+          <div className="hero-eyebrow fade-up" style={{ margin: '0 auto 22px auto' }}><span className="pulse-dot" />Services</div>
+          <h1 className="fade-up delay-1">Virtual <span className="highlight">Sustainability Teams</span></h1>
+          <p className="fade-up delay-2" style={{ maxWidth: '600px', margin: '0 auto 40px', fontSize: '1.1rem' }}>
+            Choose the dedicated team you need to manage your end-to-end compliance seamlessly.
           </p>
-          <div className="final-ctas fade-up delay-3">
-            <div>
-              <Link to="/score" className="btn btn-primary btn-lg">Check Your Score →</Link>
-              <p style={{ fontSize: '0.78rem', color: 'var(--clr-text-muted)', marginTop: '8px' }}>Know where you stand</p>
-            </div>
-            <div>
-              <a href="#book-demo" className="btn btn-outline btn-lg">Book a Demo</a>
-              <p style={{ fontSize: '0.78rem', color: 'var(--clr-text-muted)', marginTop: '8px' }}>Get your team started</p>
-            </div>
+
+          {/* Clean Segmented Tab Navigation */}
+          <div className="srv-segmented-tabs fade-up delay-3">
+            {tabs.map((tab, idx) => (
+              <button 
+                key={idx}
+                className={`srv-tab-trigger ${activeTab === idx ? 'active' : ''}`}
+                onClick={() => setActiveTab(idx)}
+              >
+                {tab.icon} {tab.title}
+              </button>
+            ))}
           </div>
         </div>
       </Section>
 
+      {/* ===== TAB CONTENT COMPONENT ===== */}
+      <Section className="srv-tab-content bg-dark-2" style={{ padding: '80px 24px', minHeight: '70vh' }}>
+        <div className="container fade-up visible">
+          
+          {/* ================= TAB 1: CBAM ================= */}
+          {activeTab === 0 && (
+            <div className="tab-pane-content fade-in">
+              <div className="text-center" style={{ maxWidth: '800px', margin: '0 auto', paddingTop: '100px', paddingBottom: '80px' }}>
+                <h2 style={{ marginBottom: '16px', fontSize: '2.5rem' }}>CBAM Virtual Team for <span className="highlight">EU Exporters</span></h2>
+                <h3 style={{ marginBottom: '24px', color: 'var(--clr-text-muted)' }}>End-to-End CBAM Compliance. Without Building an In-House Team.</h3>
+                <p>
+                  Wefetch's CBAM Virtual Team manages your entire compliance process — from data collection to reporting and verification ensuring accuracy, speed, and audit readiness.
+                </p>
+                <div style={{ marginTop: '32px' }}>
+                  <Link to="/contact" className="btn btn-primary btn-lg">Book Free Consultation</Link>
+                </div>
+              </div>
+
+              <div className="srv-stat-grid text-center" style={{ marginBottom: '80px' }}>
+                <div className="card stat-item">
+                  <div className="srv-stat-num">300+</div>
+                  <div className="srv-stat-label">Companies Supported</div>
+                </div>
+                <div className="card stat-item">
+                  <div className="srv-stat-num">1000+</div>
+                  <div className="srv-stat-label">CBAM Reports Managed</div>
+                </div>
+                <div className="card stat-item">
+                  <div className="srv-stat-num">50+</div>
+                  <div className="srv-stat-label">Product Categories</div>
+                </div>
+                <div className="card stat-item">
+                  <div className="srv-stat-num" style={{ color: 'var(--clr-green-deep)' }}>70%+</div>
+                  <div className="srv-stat-label">Cost Saved vs In-House</div>
+                </div>
+              </div>
+
+              <div className="srv-content-grid" style={{ gap: '60px' }}>
+                <div>
+                  <h3 style={{ marginBottom: '24px' }}>Manage Your <span className="highlight">CBAM Compliance</span> in One Flow</h3>
+                  <ul className="check-list srv-checklist">
+                    <li><CheckIcon /> <strong>Data Collection Made Simple:</strong> Collect and organize raw materials, energy, and production data across operations with structured templates.</li>
+                    <li><CheckIcon /> <strong>Accurate Emissions Calculation:</strong> Calculate embedded emissions at a product level using EU-approved methodologies.</li>
+                    <li><CheckIcon /> <strong>Quarterly Reporting, Done Right:</strong> Prepare and maintain CBAM reports with complete documentation, ready for submission.</li>
+                    <li><CheckIcon /> <strong>Supplier Data Coordination:</strong> Track and manage supplier data efficiently with follow-ups and structured inputs.</li>
+                    <li><CheckIcon /> <strong>Verification-Ready Outputs:</strong> Maintain audit-ready documentation aligned with EU standards, with full support.</li>
+                    <li><CheckIcon /> <strong>Submission & Compliance Closure:</strong> Handle submissions, revisions, and coordination to ensure complete compliance.</li>
+                  </ul>
+                </div>
+
+                <div className="card bg-dark" style={{ border: '1px solid var(--clr-border)', padding: '40px' }}>
+                  <h3 style={{ marginBottom: '16px' }}><GlobeIcon className="inline-icon" style={{color: 'var(--clr-accent)'}}/> End-to-End Execution</h3>
+                  <p style={{ marginBottom: '24px' }}>From onboarding to final submission, every step is handled by a dedicated CBAM team.</p>
+                  <ul className="check-list srv-checklist-compact">
+                    <li><ArrowRightIcon className="inline-icon" style={{color: 'var(--clr-accent)'}}/> Product and process mapping</li>
+                    <li><ArrowRightIcon className="inline-icon" style={{color: 'var(--clr-accent)'}}/> Emission source identification</li>
+                    <li><ArrowRightIcon className="inline-icon" style={{color: 'var(--clr-accent)'}}/> Data system setup</li>
+                    <li><ArrowRightIcon className="inline-icon" style={{color: 'var(--clr-accent)'}}/> Emissions calculation and validation</li>
+                    <li><ArrowRightIcon className="inline-icon" style={{color: 'var(--clr-accent)'}}/> Reporting and documentation</li>
+                    <li><ArrowRightIcon className="inline-icon" style={{color: 'var(--clr-accent)'}}/> Verification coordination</li>
+                    <li><ArrowRightIcon className="inline-icon" style={{color: 'var(--clr-accent)'}}/> Submission support</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div className="srv-content-grid" style={{ gap: '60px', marginTop: '80px' }}>
+                <div className="card" style={{ padding: '40px' }}>
+                  <h3 style={{ marginBottom: '16px' }}><CalendarIcon className="inline-icon" style={{color: 'var(--clr-accent)'}}/> Continuous Compliance</h3>
+                  <p style={{ marginBottom: '24px' }}>CBAM is an ongoing process. The Virtual Team ensures:</p>
+                  <ul className="check-list srv-checklist-compact">
+                    <li><ArrowRightIcon className="inline-icon" style={{color: 'var(--clr-accent)'}}/> Continuous data tracking</li>
+                    <li><ArrowRightIcon className="inline-icon" style={{color: 'var(--clr-accent)'}}/> Regular compliance updates</li>
+                    <li><ArrowRightIcon className="inline-icon" style={{color: 'var(--clr-accent)'}}/> Improved reporting accuracy over time</li>
+                    <li><ArrowRightIcon className="inline-icon" style={{color: 'var(--clr-accent)'}}/> Adaptation to regulatory changes</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3 style={{ marginBottom: '24px' }}>What You <span className="highlight">Get</span></h3>
+                  <p style={{ marginBottom: '24px' }}>Replace complex internal processes and fragmented consulting with a single, structured system managed by experts. Start Your CBAM Compliance Journey Today.</p>
+                  <ul className="check-list srv-checklist" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+                    <li><CheckIcon /> Dedicated Virtual Team</li>
+                    <li><CheckIcon /> End-to-end management</li>
+                    <li><CheckIcon /> Quarterly reporting support</li>
+                    <li><CheckIcon /> Emission calculations</li>
+                    <li><CheckIcon /> Verification-ready docs</li>
+                    <li><CheckIcon /> 3rd-party verification calc</li>
+                    <li><CheckIcon /> Continuous compliance</li>
+                    <li><CheckIcon /> Integrated software platform</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div className="text-center" style={{ marginTop: '80px', paddingTop: '60px', paddingBottom: '80px', borderTop: '1px solid var(--clr-border)' }}>
+                <span className="section-label">Speak to an Expert</span>
+                <h3 style={{ fontSize: '2rem', marginBottom: '16px' }}>Simplify CBAM Compliance</h3>
+                <p style={{ marginBottom: '32px' }}>Get a clear, structured approach to managing your requirements.</p>
+                <Link to="/contact" className="btn btn-primary btn-lg">Book Free Consultation</Link>
+              </div>
+            </div>
+          )}
+
+          {/* ================= TAB 2: ECOVADIS ================= */}
+          {activeTab === 1 && (
+            <div className="tab-pane-content fade-in">
+              <div className="text-center" style={{ maxWidth: '800px', margin: '0 auto', paddingTop: '100px', paddingBottom: '80px' }}>
+                <h2 style={{ marginBottom: '16px', fontSize: '2.5rem' }}>EcoVadis Virtual Team <span className="highlight">(V-Team)</span></h2>
+                <h3 style={{ marginBottom: '24px', color: 'var(--clr-text-muted)' }}>End-to-End EcoVadis Assessment. Fully Managed.</h3>
+                <p>
+                  EcoVadis assessments require structured data, strong documentation, and precise responses aligned with scoring criteria. Wefetch provides a dedicated EcoVadis Virtual Team to manage the entire process from data collection to submission with a system-driven approach.
+                </p>
+                <div style={{ marginTop: '32px' }}>
+                  <Link to="/contact" className="btn btn-primary btn-lg">Book Free Consultation</Link>
+                </div>
+              </div>
+
+              <div className="srv-stat-grid text-center" style={{ marginBottom: '80px' }}>
+                <div className="card stat-item">
+                  <div className="srv-stat-num">100+</div>
+                  <div className="srv-stat-label">Assessments Managed</div>
+                </div>
+                <div className="card stat-item">
+                  <div className="srv-stat-num" style={{ color: 'var(--clr-green-deep)' }}>+20–40</div>
+                  <div className="srv-stat-label">Points Score Improvement</div>
+                </div>
+                <div className="card stat-item">
+                  <div className="srv-stat-num">50+</div>
+                  <div className="srv-stat-label">Categories Covered</div>
+                </div>
+                <div className="card stat-item">
+                  <div className="srv-stat-num" style={{ color: 'var(--clr-accent)' }}>Higher</div>
+                  <div className="srv-stat-label">Win Rate Across Evaluations</div>
+                </div>
+              </div>
+
+              <div className="srv-content-grid" style={{ gap: '60px' }}>
+                <div>
+                  <h3 style={{ marginBottom: '24px' }}>Complete EcoVadis <span className="highlight">Execution</span></h3>
+                  <ul className="check-list srv-checklist">
+                    <li><CheckIcon /> <strong>Setup & Onboarding:</strong> Understand current score, identify gaps, and structure the assessment approach.</li>
+                    <li><CheckIcon /> <strong>Data & Document Management:</strong> Collect policies, evidence, and operational data across departments.</li>
+                    <li><CheckIcon /> <strong>Response Optimization:</strong> Prepare clear, aligned, and high-scoring questionnaire responses.</li>
+                    <li><CheckIcon /> <strong>Documentation & Evidence:</strong> Build complete, audit-ready documentation aligned with EcoVadis requirements.</li>
+                    <li><CheckIcon /> <strong>Submission & Review:</strong> Handle submission with accuracy and consistency.</li>
+                    <li><CheckIcon /> <strong>Continuous Improvement:</strong> Track performance and improve scores over time.</li>
+                  </ul>
+                </div>
+
+                <div className="card bg-dark" style={{ border: '1px solid var(--clr-border)', padding: '40px' }}>
+                  <h3 style={{ marginBottom: '16px' }}><TrophyIcon className="inline-icon" style={{color: 'var(--clr-accent)'}}/> Structured Approach</h3>
+                  <p style={{ marginBottom: '24px' }}>A clear execution model ensures consistency and scalability:</p>
+                  <ul className="check-list srv-checklist-compact">
+                    <li><ArrowRightIcon className="inline-icon" style={{color: 'var(--clr-accent)'}}/> Understand current performance and gaps</li>
+                    <li><ArrowRightIcon className="inline-icon" style={{color: 'var(--clr-accent)'}}/> Build structured documentation systems</li>
+                    <li><ArrowRightIcon className="inline-icon" style={{color: 'var(--clr-accent)'}}/> Execute submission with optimized responses</li>
+                    <li><ArrowRightIcon className="inline-icon" style={{color: 'var(--clr-accent)'}}/> Continuously improve scores and outcomes</li>
+                  </ul>
+                  
+                  <div style={{ marginTop: '32px', paddingTop: '24px', borderTop: '1px solid var(--clr-border)' }}>
+                     <h4 style={{ marginBottom: '12px' }}>Continuous Improvement</h4>
+                     <p style={{ fontSize: '0.9rem', color: 'var(--clr-text-muted)' }}>EcoVadis is an ongoing process, not a one-time submission. The team ensures stronger documentation and better alignment with scoring criteria to improve performance year over year.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="srv-content-grid" style={{ gap: '60px', marginTop: '80px' }}>
+                <div style={{ gridColumn: '1 / -1' }} className="card">
+                  <h3 style={{ marginBottom: '24px', textAlign: 'center' }}>What You <span className="highlight">Get</span></h3>
+                  <ul className="check-list srv-checklist" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px' }}>
+                    <li><CheckIcon /> Dedicated EcoVadis Virtual Team</li>
+                    <li><CheckIcon /> End-to-end assessment management</li>
+                    <li><CheckIcon /> Questionnaire response optimization</li>
+                    <li><CheckIcon /> Documentation and evidence preparation</li>
+                    <li><CheckIcon /> Gap analysis and improvement support</li>
+                    <li><CheckIcon /> Submission and review handling</li>
+                    <li><CheckIcon /> Continuous score improvement</li>
+                    <li><CheckIcon /> Structured workflows and templates</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div className="text-center" style={{ marginTop: '80px', paddingTop: '60px', paddingBottom: '80px', borderTop: '1px solid var(--clr-border)' }}>
+                <span className="section-label">Speak to an Expert</span>
+                <h3 style={{ fontSize: '2rem', marginBottom: '16px' }}>Get Started</h3>
+                <p style={{ marginBottom: '32px' }}>Improve your EcoVadis score with a structured system and a dedicated team managing it end-to-end.</p>
+                <Link to="/contact" className="btn btn-primary btn-lg">Book Free Consultation</Link>
+              </div>
+            </div>
+          )}
+
+          {/* ================= TAB 3: ESG ================= */}
+          {activeTab === 2 && (
+            <div className="tab-pane-content fade-in">
+              <div className="text-center" style={{ maxWidth: '800px', margin: '0 auto', paddingTop: '100px', paddingBottom: '80px' }}>
+                <h2 style={{ marginBottom: '16px', fontSize: '2.5rem' }}>ESG Virtual <span className="highlight">Teams</span></h2>
+                <h3 style={{ marginBottom: '24px', color: 'var(--clr-text-muted)' }}>End-to-End ESG Management. Fully Managed.</h3>
+                <p>
+                  Managing ESG today requires handling multiple frameworks, disclosures, ratings, and compliance requirements. Wefetch provides Virtual Sustainability Teams that act as your extended ESG function — structured, scalable, and continuously managed.
+                </p>
+                <div style={{ marginTop: '32px' }}>
+                  <Link to="/contact" className="btn btn-primary btn-lg">Book Free Consultation</Link>
+                </div>
+              </div>
+
+              <div className="srv-stat-grid text-center" style={{ marginBottom: '80px' }}>
+                <div className="card stat-item">
+                  <div className="srv-stat-num">1 System</div>
+                  <div className="srv-stat-label">Multiple Frameworks</div>
+                </div>
+                <div className="card stat-item">
+                  <div className="srv-stat-num">Dedicated</div>
+                  <div className="srv-stat-label">Expert Teams</div>
+                </div>
+                <div className="card stat-item">
+                  <div className="srv-stat-num" style={{ color: 'var(--clr-green-deep)' }}>Ongoing</div>
+                  <div className="srv-stat-label">Continuous Execution</div>
+                </div>
+                <div className="card stat-item">
+                  <div className="srv-stat-num" style={{ color: 'var(--clr-accent)' }}>Scalable</div>
+                  <div className="srv-stat-label">Aligned with Your Growth</div>
+                </div>
+              </div>
+
+              <div className="srv-content-grid" style={{ gap: '40px', gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1fr)', alignItems: 'stretch' }}>
+                
+                  {/* Row 1 */}
+                  <div className="card">
+                    <h3 style={{ marginBottom: '20px' }}>Disclosure & <span className="highlight">Reporting Frameworks</span></h3>
+                    <ul className="check-list srv-checklist-compact">
+                      <li><ArrowRightIcon className="inline-icon" style={{color:'var(--clr-accent)'}}/> <strong>GRI Reporting:</strong> Standardized ESG reporting aligned with global disclosure practices</li>
+                      <li><ArrowRightIcon className="inline-icon" style={{color:'var(--clr-accent)'}}/> <strong>CDP Disclosure:</strong> Climate and environmental disclosures for investors and stakeholders</li>
+                      <li><ArrowRightIcon className="inline-icon" style={{color:'var(--clr-accent)'}}/> <strong>IFRS S1 & S2:</strong> Financial and climate-related reporting aligned with global standards</li>
+                      <li><ArrowRightIcon className="inline-icon" style={{color:'var(--clr-accent)'}}/> <strong>TCFD Reporting:</strong> Climate risk, governance, and strategy disclosures</li>
+                      <li><ArrowRightIcon className="inline-icon" style={{color:'var(--clr-accent)'}}/> <strong>Integrated Reporting:</strong> Combined financial and sustainability reporting in one framework</li>
+                      <li><ArrowRightIcon className="inline-icon" style={{color:'var(--clr-accent)'}}/> <strong>SASB Reporting:</strong> Industry-specific ESG disclosures for investor decision-making</li>
+                    </ul>
+                  </div>
+
+                  <div className="card">
+                    <h3 style={{ marginBottom: '20px' }}>Compliance <span className="highlight">Frameworks</span></h3>
+                    <ul className="check-list srv-checklist-compact">
+                      <li><ArrowRightIcon className="inline-icon" style={{color:'var(--clr-accent)'}}/> <strong>BRSR & BRSR Core:</strong> Mandatory ESG compliance and reporting for Indian listed companies</li>
+                      <li><ArrowRightIcon className="inline-icon" style={{color:'var(--clr-accent)'}}/> <strong>CSRD Compliance:</strong> EU sustainability reporting requirements</li>
+                      <li><ArrowRightIcon className="inline-icon" style={{color:'var(--clr-accent)'}}/> <strong>EU Taxonomy:</strong> Classification of environmentally sustainable activities</li>
+                      <li><ArrowRightIcon className="inline-icon" style={{color:'var(--clr-accent)'}}/> <strong>Supply Chain Due Diligence (LkSG):</strong> Human rights and environmental compliance across supply chains</li>
+                      <li><ArrowRightIcon className="inline-icon" style={{color:'var(--clr-accent)'}}/> <strong>UK SECR:</strong> Energy and carbon reporting requirements</li>
+                      <li><ArrowRightIcon className="inline-icon" style={{color:'var(--clr-accent)'}}/> <strong>US SEC Climate Disclosure:</strong> Climate-related disclosure requirements</li>
+                    </ul>
+                  </div>
+
+                  {/* Row 2 */}
+                  <div className="card" style={{ background: 'var(--clr-dark)' }}>
+                    <h3 style={{ marginBottom: '20px' }}>Climate, Carbon & <span className="highlight">Net Zero</span></h3>
+                    <ul className="check-list srv-checklist-compact">
+                      <li><ArrowRightIcon className="inline-icon" style={{color:'var(--clr-accent)'}}/> <strong>Net Zero & SBTi Strategy:</strong> Emission reduction targets aligned with global climate goals</li>
+                      <li><ArrowRightIcon className="inline-icon" style={{color:'var(--clr-accent)'}}/> <strong>Carbon Footprint (Scope 1, 2, 3):</strong> Measurement and tracking of total organizational emissions</li>
+                      <li><ArrowRightIcon className="inline-icon" style={{color:'var(--clr-accent)'}}/> <strong>Life Cycle Assessment (LCA):</strong> Environmental impact analysis across the product lifecycle</li>
+                      <li><ArrowRightIcon className="inline-icon" style={{color:'var(--clr-accent)'}}/> <strong>Product Carbon Footprint (PCF):</strong> Emissions calculation at product level</li>
+                      <li><ArrowRightIcon className="inline-icon" style={{color:'var(--clr-accent)'}}/> <strong>Energy Audit & Reduction:</strong> Identify inefficiencies and reduce energy consumption</li>
+                    </ul>
+                  </div>
+
+                  <div className="card" style={{ background: 'var(--clr-dark)' }}>
+                    <h3 style={{ marginBottom: '20px' }}>ESG Ratings & <span className="highlight">Certifications</span></h3>
+                    <ul className="check-list srv-checklist-compact">
+                      <li><ArrowRightIcon className="inline-icon" style={{color:'var(--clr-accent)'}}/> <strong>EcoVadis Rating Support:</strong> Improve sustainability ratings for global supplier evaluations</li>
+                      <li><ArrowRightIcon className="inline-icon" style={{color:'var(--clr-accent)'}}/> <strong>QS Sustainability Ranking:</strong> ESG-based rankings for universities and institutions</li>
+                      <li><ArrowRightIcon className="inline-icon" style={{color:'var(--clr-accent)'}}/> <strong>MSCI ESG Rating Support:</strong> ESG ratings used by investors for risk assessment</li>
+                      <li><ArrowRightIcon className="inline-icon" style={{color:'var(--clr-accent)'}}/> <strong>Sustainalytics Rating Support:</strong> ESG risk ratings for investment decisions</li>
+                      <li><ArrowRightIcon className="inline-icon" style={{color:'var(--clr-accent)'}}/> <strong>ISS ESG Rating Support:</strong> Corporate ESG performance evaluation for investors</li>
+                    </ul>
+                  </div>
+
+              </div>
+
+              <div className="card bg-dark" style={{ marginTop: '40px', padding: '40px', border: '1px solid var(--clr-accent-glow)' }}>
+                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '40px', alignItems: 'center' }}>
+                    <div>
+                      <span className="section-label">One System. Multiple ESG Requirements.</span>
+                      <h3 style={{ marginBottom: '16px' }}>Custom ESG Virtual Team</h3>
+                      <p>A fully dedicated ESG setup tailored to your organization. Replace fragmented efforts, multiple consultants, and internal complexity with a single, structured ESG system managed by expert teams.</p>
+                    </div>
+                    <div>
+                      <ul className="check-list">
+                        <li><CheckIcon className="inline-icon"/> Dedicated ESG Manager</li>
+                        <li><CheckIcon className="inline-icon"/> Multiple frameworks managed together</li>
+                        <li><CheckIcon className="inline-icon"/> Monthly ESG reporting</li>
+                        <li><CheckIcon className="inline-icon"/> Continuous tracking and improvements</li>
+                        <li><CheckIcon className="inline-icon"/> Acts as your Virtual Sustainability Department</li>
+                      </ul>
+                    </div>
+                 </div>
+              </div>
+
+              <div className="text-center" style={{ marginTop: '80px', paddingTop: '60px', paddingBottom: '80px', borderTop: '1px solid var(--clr-border)' }}>
+                <span className="section-label">Speak to an Expert</span>
+                <h3 style={{ fontSize: '2rem', marginBottom: '16px' }}>Get Started</h3>
+                <p style={{ marginBottom: '32px' }}>Build a scalable ESG function without building an in-house team.</p>
+                <Link to="/contact" className="btn btn-primary btn-lg">Book a Consultation →</Link>
+              </div>
+            </div>
+          )}
+          
+        </div>
+      </Section>
     </main>
   );
 }

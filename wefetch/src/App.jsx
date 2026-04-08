@@ -5,6 +5,11 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import Services from './pages/Services';
 import Score from './pages/Score';
+import About from './pages/About';
+import Pricing from './pages/Pricing';
+import Tools from './pages/Tools';
+import Blogs from './pages/Blogs';
+import EmissionLeakageBlog from './pages/EmissionLeakageBlog';
 
 // Scroll to top on route change
 function ScrollToTop() {
@@ -22,6 +27,11 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/services" element={<Services />} />
         <Route path="/score" element={<Score />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/pricing" element={<Pricing />} />
+        <Route path="/tools" element={<Tools />} />
+        <Route path="/blogs" element={<Blogs />} />
+        <Route path="/emisson-leakage-meaning-causes-examples-prevention" element={<EmissionLeakageBlog />} />
       </Routes>
       <Footer />
     </BrowserRouter>

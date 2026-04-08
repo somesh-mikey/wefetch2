@@ -1,1 +1,149 @@
-/* Navbar component styles are all in src/index.css (global) */
+.nav-item-dropdown {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  height: 100%;
+}
+
+.mega-menu {
+  position: fixed;
+  top: 70px; /* roughly navbar height */
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: #ffffff;
+  width: 90vw;
+  max-width: 1000px;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 20px 40px rgba(15, 107, 92, 0.1);
+  border: 1px solid var(--clr-border);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: all 0.25s ease;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Invisible bridge to prevent hover loss when moving mouse from link to menu */
+.mega-menu::before {
+  content: "";
+  position: absolute;
+  top: -30px;
+  left: 0;
+  right: 0;
+  height: 30px;
+  background: transparent;
+}
+
+.nav-item-dropdown:hover .mega-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
+}
+
+.mega-menu-inner {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 32px;
+}
+
+.mega-col {
+  border-right: 1px solid var(--clr-dark-3);
+  padding-right: 24px;
+  padding-left: 24px;
+}
+.mega-col:first-child { padding-left: 0; }
+.mega-col:last-child { border-right: none; padding-right: 0; }
+
+.mega-col h4 {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--clr-text-light);
+  margin-bottom: 24px;
+}
+
+.mega-link-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.mega-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--clr-text-muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.15s;
+}
+
+.mega-link:hover {
+  color: var(--clr-green-deep);
+}
+
+.mega-icon-wrap {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+/* Base icon colors */
+.bg-fashion { background: #2f6140; }
+.bg-steel { background: #1c528f; }
+.bg-cement { background: #b03632; }
+.bg-alum { background: #22216e; }
+
+.bg-cdp { background: #b01b22; }
+.bg-sbti { background: #e0f2fe; color: #0284c7; }
+.bg-gri { background: #1e3a8a; }
+.bg-ifrs { background: #991b1b; }
+
+.bg-brsr { background: #475569; }
+.bg-cpcb { background: #3f6212; }
+.bg-cgwa { background: #c0caf5; color: #0369a1; }
+
+.bg-cbam { background: #1e3a8a; }
+
+.badge-new {
+  background: #f59e0b;
+  color: #fff;
+  font-size: 0.65rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 700;
+  margin-left: 6px;
+}
+
+.mega-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 24px;
+  padding: 16px 32px;
+  border-top: 1px solid var(--clr-dark-3);
+  background: var(--clr-dark-2);
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+}
+
+.mega-footer-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--clr-text-light);
+  text-decoration: none;
+}
+
+.mega-footer-link:hover {
+  color: var(--clr-green-deep);
+}

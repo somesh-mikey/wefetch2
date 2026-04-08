@@ -1,0 +1,86 @@
+.blog-detail-page {
+  padding-top: 120px;
+  min-height: 100vh;
+  padding-bottom: 80px;
+  color: var(--clr-text-main);
+}
+
+.blog-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.blog-header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.blog-header h1 {
+  color: var(--clr-text-title);
+  line-height: 1.2;
+}
+
+.blog-hero-image {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 3rem;
+  object-fit: cover;
+  max-height: 400px;
+}
+
+.blog-body {
+  line-height: 1.8;
+  color: var(--clr-text-muted);
+}
+
+.blog-body p {
+  margin-bottom: 1.5rem;
+}
+
+.blog-body h2 {
+  color: var(--clr-text-title);
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+.blog-body h3 {
+  color: var(--clr-text-title);
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.blog-divider {
+  border: 0;
+  height: 1px;
+  background: var(--clr-border);
+  margin: 4rem 0;
+}
+
+.blog-faq .faq-item {
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-border);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.blog-faq .faq-item h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  color: var(--clr-primary, #10b981); /* Assuming a green theme, or fallback */
+}
+
+.blog-faq .faq-item p {
+  margin-bottom: 0;
+}
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease-out;
+}
+
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}

@@ -1,0 +1,126 @@
+.tools-page {
+  padding-top: var(--nav-height);
+  background-color: var(--clr-light-bg);
+  color: var(--clr-text-light);
+}
+
+.tools-page .container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.tools-hero {
+  padding: 8rem 0 4rem;
+  background-color: var(--clr-light-bg);
+}
+
+.tools-hero h1 {
+  font-size: 4rem;
+  margin-bottom: 2rem;
+}
+
+.tools-hero .highlight {
+  color: var(--clr-accent);
+}
+
+.hero-sub {
+  font-size: 1.5rem;
+  color: var(--clr-text-muted);
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.bg-dark-2 {
+  background-color: var(--clr-dark-2);
+}
+.bg-dark {
+  background-color: var(--clr-light-bg);
+}
+
+.tools-grid-section {
+  padding: 6rem 0;
+}
+
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.tool-card {
+  background-color: var(--clr-card-bg);
+  border: 1px solid var(--clr-border);
+  padding: 2.5rem;
+  border-radius: 12px;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.tool-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--clr-accent);
+}
+
+.tool-icon {
+  width: 60px;
+  height: 60px;
+  background-color: rgba(0, 184, 148, 0.1);
+  color: var(--clr-accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.tool-card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  color: var(--clr-text-light);
+}
+
+.tool-card p {
+  color: var(--clr-text-muted);
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  flex-grow: 1;
+}
+
+.tool-card .text-link {
+  color: var(--clr-text-light);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  align-self: flex-start;
+}
+
+.tool-card .text-link:hover {
+  color: var(--clr-accent);
+}
+
+/* Animations */
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+
+@media (max-width: 768px) {
+  .tools-hero h1 { font-size: 3rem; }
+  .hero-sub { font-size: 1.2rem; }
+}
