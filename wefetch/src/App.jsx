@@ -31,7 +31,7 @@ export default function App() {
         <Route path="/pricing" element={<Pricing />} />
         <Route path="/tools" element={<Tools />} />
         <Route path="/blogs" element={<Blogs />} />
-        <Route path="/emisson-leakage-meaning-causes-examples-prevention" element={<EmissionLeakageBlog />} />
+        <Route path="/emission-leakage-meaning-causes-examples-prevention" element={<EmissionLeakageBlog />} />
       </Routes>
       <Footer />
     </BrowserRouter>

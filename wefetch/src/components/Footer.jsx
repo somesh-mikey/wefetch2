@@ -47,7 +47,7 @@ export default function Footer() {
           <div className="footer-col">
             <h5>Resources</h5>
             <ul>
-              <li><Link to="/blog">Blog</Link></li>
+              <li><Link to="/blogs">Blog</Link></li>
               <li><Link to="/tools">Varsity</Link></li>
               <li><Link to="/support">Support</Link></li>
               <li><Link to="/newsletter">Newsletter</Link></li>

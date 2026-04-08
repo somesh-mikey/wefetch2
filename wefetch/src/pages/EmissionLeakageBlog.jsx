@@ -70,7 +70,7 @@ export default function EmissionLeakageBlog() {
     "dateModified": "2026-04-03",
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": "https://wefetch.co/emisson-leakage-meaning-causes-examples-prevention"
+      "@id": "https://wefetch.co/emission-leakage-meaning-causes-examples-prevention"
     },
     "image": "https://wefetch.co/blog-header.jpg"
   };
@@ -88,7 +88,7 @@ export default function EmissionLeakageBlog() {
         <div className="blog-container container">
           <article className="blog-content fade-up visible">
             <header className="blog-header">
-              <h1>Emission leakage: Meaning, Causes, Example and how to prevent it</h1>
+              <h1>Emission Leakage: Meaning, Causes, Example and how to prevent it</h1>
             </header>
             
             <img 

@@ -34,7 +34,7 @@ export default function Blogs() {
               <p className="plan-desc" style={{ marginTop: '1rem', flexGrow: 1 }}>
                 In the fight against climate change, countries around the world are setting strict rules to lower carbon footprints. While this is great for the planet, it sometimes leads to a tricky problem called emission leakage.
               </p>
-              <Link to="/emisson-leakage-meaning-causes-examples-prevention" className="btn btn-outline" style={{ marginTop: '1.5rem', alignSelf: 'flex-start' }}>Read Article</Link>
+              <Link to="/emission-leakage-meaning-causes-examples-prevention" className="btn btn-outline" style={{ marginTop: '1.5rem', alignSelf: 'flex-start' }}>Read Article</Link>
             </div>
           </div>
         </div>

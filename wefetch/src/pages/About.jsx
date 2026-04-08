@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import './About.css';
-import { GlobeIcon, UserIcon, ArrowRightIcon } from '../components/Icons';
+import { UserIcon } from '../components/Icons';
 import { Link } from 'react-router-dom';
 
 function Section({ children, className = '' }) {
