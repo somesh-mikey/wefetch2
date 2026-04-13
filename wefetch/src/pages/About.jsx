@@ -99,19 +99,21 @@ export default function About() {
               {
                 name: 'Balaji S',
                 role: 'CEO, Wefetch',
+                image: '/images/CEO.jpeg',
                 desc: 'I come from an agricultural background, which gave me early exposure to how environmental changes impact real-world systems. Over time, I started looking deeper into where these challenges originate and how industries have evolved. What stood out was this: many businesses today are willing to move in a better direction, but often lack the clarity and structure to do it effectively. That’s where the idea for Wefetch came in. What if businesses didn’t have to figure everything out on their own? What if responsible operations could be built in a more structured and consistent way? Wefetch was built to enable that shift — helping companies move forward, not just by growing, but by growing more responsibly.'
               },
               {
                 name: 'GM',
                 role: 'General Manager',
-                desc: 'Growing up with a close connection to nature shapes how you see the world. It creates an awareness of how fragile it is—and how important it is to protect it. That perspective is what makes working at Wefetch truly meaningful. At Wefetch, sustainability is not treated as just an idea or a responsibility—it is transformed into something real, measurable, and actionable. What is often seen as complex and overwhelming becomes clear, structured, and achievable through data-driven insights and practical solutions. From a management perspective, what stands out is how the platform brings clarity by making environmental impact visible and easy to understand, while also enabling real action instead of just reporting. At the same time, it is built to scale, allowing businesses of all sizes to operate more responsibly without added complexity. In today’s world, sustainability is no longer optional—it is essential, both for the planet and for the future of business. Being part of Wefetch goes beyond a role. It is about contributing to something larger—helping organizations take confident steps toward reducing their impact and building a more sustainable future. And that’s what makes this journey truly meaningful.'
+                image: '/images/GM.jpeg',
+                desc: 'I didn’t grow up feeling disconnected from nature. I was always around it, and I think that shaped how I see things today. It made me realise early on how fragile the environment really is and why it’s something worth protecting. When I stepped into the business world, one thing kept bothering me: if companies want to do the right thing, why is it still so hard for them to actually operate responsibly? That question is what eventually led me to Wefetch. I didn’t choose Wefetch just for a role. I chose it because of what it’s trying to solve. Sustainability can feel confusing and overwhelming for a lot of businesses, and Wefetch makes it simpler. It breaks things down, gives clarity, and helps companies actually take action instead of just talking about it. In my time here, I’ve seen how much of a difference that clarity makes. When businesses understand what to do and how to do it, they move faster. They go from intention to real action. For me, this isn’t just a job. It feels like I’m part of something that actually matters, helping businesses grow while also reducing their impact. And honestly, that’s what makes this journey worth it.'
               }
             ].map((member, i) => (
-              <div className={`team-member fade-up delay-${(i % 4) + 1}`} key={member.name} style={{ height: '100%' }}>
-                <div className="member-avatar"><UserIcon /></div>
-                <h4>{member.name}</h4>
-                <div className="member-role">{member.role}</div>
-                <p style={{ textAlign: 'left', whiteSpace: 'pre-wrap' }}>{member.desc}</p>
+              <div className={`team-member fade-up delay-${(i % 4) + 1}`} key={member.name} style={{ height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', backgroundColor: '#fff', color: '#000', borderRadius: '16px', padding: '16px' }}>
+                <img src={member.image} alt={member.name} style={{ width: '100%', borderRadius: '16px', objectFit: 'cover', aspectRatio: '4/3', marginBottom: '20px', filter: 'grayscale(100%)' }} />
+                <h4 style={{ textAlign: 'center', marginBottom: '4px', fontSize: '1.25rem', color: '#111' }}>{member.name}</h4>
+                <div style={{ textAlign: 'center', color: '#666', marginBottom: '24px', fontSize: '0.9rem' }}>{member.role}</div>
+                <p style={{ textAlign: 'left', whiteSpace: 'pre-wrap', width: '100%', color: '#444', fontSize: '0.9rem' }}>{member.desc}</p>
               </div>
             ))}
           </div>

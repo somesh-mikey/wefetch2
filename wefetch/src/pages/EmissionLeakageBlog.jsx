@@ -1,7 +1,13 @@
+import { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import './Blog.css';
 
 export default function EmissionLeakageBlog() {
+  const [activeFaq, setActiveFaq] = useState(null);
+
+  const toggleFaq = (index) => {
+    setActiveFaq(activeFaq === index ? null : index);
+  };
   const faqSchemaCode = {
     "@context": "https://schema.org/",
     "@type": "FAQPage",
@@ -83,17 +89,17 @@ export default function EmissionLeakageBlog() {
         <script type="application/ld+json">{JSON.stringify(faqSchemaCode)}</script>
         <script type="application/ld+json">{JSON.stringify(blogSchemaCode)}</script>
       </Helmet>
-      
+
       <main className="blog-detail-page bg-dark-2">
         <div className="blog-container container">
           <article className="blog-content fade-up visible">
             <header className="blog-header">
               <h1>Emission Leakage: Meaning, Causes, Example and how to prevent it</h1>
             </header>
-            
-            <img 
-              src="https://images.unsplash.com/photo-1611273426858-450d873c2542?auto=format&fit=crop&q=80&w=1200" 
-              alt="Industrial emissions illustrating emission leakage concept" 
+
+            <img
+              src="/images/emission-banner.png"
+              alt="Emission Leakage Banner"
               className="blog-hero-image"
             />
 
@@ -136,30 +142,17 @@ export default function EmissionLeakageBlog() {
 
               <h2>FAQ (Frequently Asked Questions)</h2>
               <div className="blog-faq">
-                <div className="faq-item">
-                  <h3>1. What is emission leakage in simple terms?</h3>
-                  <p>Emission leakage means shifting pollution from one country to another instead of reducing it, usually due to differences in environmental regulations.</p>
-                </div>
-                <div className="faq-item">
-                  <h3>2. Why does emission leakage happen?</h3>
-                  <p>It happens when companies move operations to countries with lower carbon regulations to reduce costs and avoid strict climate policies.</p>
-                </div>
-                <div className="faq-item">
-                  <h3>3. Which industries are most affected by emission leakage?</h3>
-                  <p>Industries like steel, cement, aluminum, and manufacturing are most affected because they are energy-intensive and sensitive to regulation costs.</p>
-                </div>
-                <div className="faq-item">
-                  <h3>4. How does emission leakage impact climate change?</h3>
-                  <p>It reduces the effectiveness of climate policies by shifting emissions instead of lowering them globally, making it harder to control overall pollution.</p>
-                </div>
-                <div className="faq-item">
-                  <h3>5. How can emission leakage be prevented?</h3>
-                  <p>It can be prevented through strong carbon regulations, global cooperation, and policies like carbon border adjustments that create fair competition.</p>
-                </div>
-                <div className="faq-item">
-                  <h3>6. Is emission leakage related to gas leakage?</h3>
-                  <p>No, emission leakage is not about physical gas leaks. It refers to the shifting of emissions from one country to another due to differences in environmental regulations.</p>
-                </div>
+                {faqSchemaCode.mainEntity.map((faq, index) => (
+                  <div key={index} className={`faq-item ${activeFaq === index ? 'active' : ''}`}>
+                    <div className="faq-question" onClick={() => toggleFaq(index)}>
+                      <h3>{index + 1}. {faq.name}</h3>
+                      <span className="faq-icon">{activeFaq === index ? '−' : '+'}</span>
+                    </div>
+                    <div className="faq-answer">
+                      <p>{faq.acceptedAnswer.text}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </article>
