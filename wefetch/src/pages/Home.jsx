@@ -60,7 +60,7 @@ export default function Home() {
             <div className="hero-card dashboard-hero-card">
               <div className="hero-card-header">
                 <div className="hero-mac-dots"><span className="red"></span><span className="yellow"></span><span className="green"></span></div>
-                <div className="hero-card-title-center"><BarChartIcon className="inline-icon" /> Sustainability Dashboard</div>
+                <div className="hero-card-title-center"> Sustainability Dashboard</div>
               </div>
               <div className="stat-grid">
                 {[
