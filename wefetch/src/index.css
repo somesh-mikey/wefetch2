@@ -40,8 +40,8 @@ button { cursor: pointer; font-family: var(--font-sans); }
 img { max-width: 100%; display: block; }
 
 /* Typography */
-h1 { font-size: clamp(2.2rem, 4.5vw, 3.8rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; }
-h2 { font-size: clamp(1.75rem, 3vw, 2.7rem); font-weight: 800; line-height: 1.18; letter-spacing: -0.025em; }
+h1 { font-size: clamp(2.2rem, 4.5vw, 3.8rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; word-break: break-word; }
+h2 { font-size: clamp(1.75rem, 3vw, 2.7rem); font-weight: 800; line-height: 1.18; letter-spacing: -0.025em; word-break: break-word; }
 h3 { font-size: clamp(1.1rem, 1.8vw, 1.4rem); font-weight: 700; line-height: 1.3; }
 h4 { font-size: 1rem; font-weight: 600; }
 p  { font-size: clamp(1.1rem, 1.8vw, 1.4rem); line-height: 1.75; color: var(--clr-text-muted); }

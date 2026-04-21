@@ -35,8 +35,25 @@ export default function Pricing() {
         <div className="container">
           <div className="plans-grid fade-up delay-1">
             
-            {/* CBAM Team */}
+            {/* EcoVadis V-Team */}
             <div className="plan-card">
+              <h3>EcoVadis V-Team</h3>
+              <p className="plan-desc">End-to-End EcoVadis Assessment. Fully Managed.</p>
+              <div className="plan-price" style={{ minHeight: '60px', display: 'flex', alignItems: 'center' }}>
+                <span className="amount text-lg" style={{ fontSize: '1.5rem', fontWeight: '500' }}>Custom Pricing</span>
+              </div>
+              <ul className="plan-features">
+                <li><i className="las la-check"></i> Setup & Gap Analysis</li>
+                <li><i className="las la-check"></i> Data & Document Management</li>
+                <li><i className="las la-check"></i> Response Optimization</li>
+                <li><i className="las la-check"></i> Submission & Review handling</li>
+              </ul>
+              <Link to="/contact" className="btn btn-outline">Get Price</Link>
+            </div>
+
+            {/* CBAM Team */}
+            <div className="plan-card popular">
+              <div className="popular-badge">Most Popular</div>
               <h3>CBAM Team</h3>
               <p className="plan-desc">End-to-End CBAM Compliance. Fully Managed.</p>
               <div className="plan-price">
@@ -50,24 +67,7 @@ export default function Pricing() {
                 <li><i className="las la-check"></i> Quarterly reporting support</li>
                 <li><i className="las la-check"></i> Verification-ready documentation</li>
               </ul>
-              <Link to="/contact" className="btn btn-outline">Get Started</Link>
-            </div>
-
-            {/* EcoVadis V-Team */}
-            <div className="plan-card popular">
-              <div className="popular-badge">Most Popular</div>
-              <h3>EcoVadis V-Team</h3>
-              <p className="plan-desc">End-to-End EcoVadis Assessment. Fully Managed.</p>
-              <div className="plan-price" style={{ minHeight: '60px', display: 'flex', alignItems: 'center' }}>
-                <span className="amount text-lg" style={{ fontSize: '1.5rem', fontWeight: '500' }}>Custom Pricing</span>
-              </div>
-              <ul className="plan-features">
-                <li><i className="las la-check"></i> Setup & Gap Analysis</li>
-                <li><i className="las la-check"></i> Data & Document Management</li>
-                <li><i className="las la-check"></i> Response Optimization</li>
-                <li><i className="las la-check"></i> Submission & Review handling</li>
-              </ul>
-              <Link to="/contact" className="btn btn-primary">Get Price</Link>
+              <Link to="/contact" className="btn btn-primary">Get Started</Link>
             </div>
 
             {/* Custom Team */}

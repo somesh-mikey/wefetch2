@@ -19,7 +19,7 @@
   background-image: radial-gradient(rgba(0,184,148,0.04) 1px, transparent 1px);
   background-size: 40px 40px;
 }
-.hero-inner { display: flex; flex-direction: column; align-items: center; position: relative; z-index: 1; text-align: center; }
+.hero-inner { display: flex; flex-direction: column; align-items: center; position: relative; z-index: 1; text-align: center; width: 100%; }
 .hero-eyebrow {
   display: inline-flex; align-items: center; gap: 8px;
   background: rgba(0,184,148,0.1); border: 1px solid rgba(0,184,148,0.25);
@@ -178,7 +178,7 @@
 
 /* ---- Responsive ---- */
 @media (max-width: 900px) {
-  .hero h1 { font-size: 3.2rem; }
+  .hero h1 { font-size: 2.8rem; }
   .hero-inner   { grid-template-columns: 1fr; display: flex; flex-direction: column; }
   .stat-grid { grid-template-columns: 1fr 1fr !important; }
   .team-grid    { grid-template-columns: 1fr; }
@@ -193,9 +193,17 @@
 }
 @media (max-width: 600px) {
   .hero { padding: 120px 20px 80px; }
+  .hero h1 { font-size: 2.2rem; }
+  .hero-sub { font-size: 1rem; }
+  .hero-card.dashboard-hero-card { padding: 20px 16px; }
+  .stat-grid { gap: 10px; }
+  .stat-item { padding: 16px 12px; }
+  .stat-num { font-size: 1.4rem; }
   .steps-grid   { grid-template-columns: 1fr; }
   .pain-grid    { grid-template-columns: 1fr; }
   .services-grid { grid-template-columns: 1fr 1fr; }
-  .hero-ctas    { flex-direction: column; }
-  .final-ctas   { flex-direction: column; align-items: center; }
+  .hero-ctas    { flex-direction: column; width: 100%; align-items: stretch; max-width: 320px; margin-left: auto; margin-right: auto; }
+  .hero-ctas .btn { justify-content: center; width: 100%; }
+  .final-ctas   { flex-direction: column; align-items: stretch; width: 100%; max-width: 320px; margin-left: auto; margin-right: auto; }
+  .final-ctas .btn { justify-content: center; width: 100%; }
 }

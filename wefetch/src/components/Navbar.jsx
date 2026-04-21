@@ -28,7 +28,9 @@ export default function Navbar() {
     <>
       <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
         <div className="navbar-inner">
-          <Link to="/" className="navbar-logo">We<span>fetch</span></Link>
+          <Link to="/" className="navbar-logo">
+            <img src="/images/WefetchLogo.png" alt="Wefetch" style={{ height: '36px', width: 'auto' }} />
+          </Link>
           <div className="navbar-links">
             <Link to="/" className={pathname === '/' ? 'active' : ''}>Home</Link>
             

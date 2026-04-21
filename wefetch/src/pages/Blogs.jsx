@@ -18,7 +18,7 @@ function Section({ children, className = '' }) {
 
 export default function Blogs() {
   return (
-    <main className="blogs-page" style={{ paddingTop: '100px', minHeight: '80vh' }}>
+    <main className="blogs-page" style={{ paddingTop: '100px', paddingBottom: '100px', minHeight: '80vh' }}>
       <Section className="blogs-hero">
         <div className="container">
           <div className="text-center" style={{ marginBottom: '3rem' }}>

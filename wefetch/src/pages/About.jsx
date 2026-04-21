@@ -51,16 +51,16 @@ export default function About() {
             </div>
             <div className="mission-stats fade-up delay-2">
               <div className="stat-card">
-                <span className="stat-big">70+</span>
-                <span>Companies using Wefetch</span>
+                <span className="stat-big">7+</span>
+                <span>Sectors Covered</span>
               </div>
               <div className="stat-card">
-                <span className="stat-big">60+</span>
-                <span>Factories reporting globally</span>
+                <span className="stat-big">30+</span>
+                <span>Report Frame Works</span>
               </div>
               <div className="stat-card">
-                <span className="stat-big">10M+</span>
-                <span>Tonnes of emissions managed</span>
+                <span className="stat-big">5%</span>
+                <span>Target to Reduce Carbon Footprint</span>
               </div>
             </div>
           </div>

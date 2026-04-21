@@ -163,22 +163,19 @@ export default function Home() {
           <div className="testimonial-container fade-up">
             <div className="testimonial-quote-box">
               <h3 className="testimonial-quote">
-                "In the IT function, Lenovo is a big part of our sustainability drive. From energy-efficient products to sustainable packaging to offsetting carbon emissions, Lenovo is helping us become more sustainable."
+                "Working with Wefetch Technologies has been a game-changer for us. Before we started, there were many doubts surrounding the CBAM process, but their team made everything much clearer. Not only did we receive all our reports strictly on time, but we also gained a deep understanding of the compliance requirements itself. Their continuous, ongoing support has helped us build a strong foundation, and we now feel much more confident about our way forward. We've learned a great deal through this collaboration!"
               </h3>
-              <div className="testimonial-author">Mark Connop</div>
-              <div className="testimonial-role">Client Services Manager, University of Birmingham</div>
+              <div className="testimonial-author">Sri Kalishwari Metal Powder Pvt Ltd</div>
             </div>
 
             <div className="testimonial-glance">
               <h3>At-a-Glance</h3>
               <div className="glance-list">
-                <div className="glance-item"><strong>Customer:</strong> University of Birmingham</div>
-                <div className="glance-item"><strong>Industry:</strong> <span className="glance-link">Education</span></div>
-                <div className="glance-item"><strong>Product Family:</strong> <span className="glance-link">Desktops</span> <span className="glance-link">Laptops</span></div>
-                <div className="glance-item"><strong>Services:</strong> <span className="glance-link">Sustainability Services</span></div>
-                <div className="glance-item"><strong>Region:</strong> <span className="glance-link">Europe</span></div>
-                <div className="glance-item"><strong>Processor:</strong> <span className="glance-link">AMD</span> <span className="glance-link">Intel</span></div>
-                <div className="glance-item" style={{ lineHeight: 1.5 }}><strong>Topic:</strong> <span className="glance-link">Flexibility and Agility</span> <span className="glance-link">Productivity and Collaboration</span> <span className="glance-link">Sustainability</span></div>
+                <div className="glance-item"><strong>Customer:</strong> Sri Kalishwari Metal Powder Pvt Ltd</div>
+                <div className="glance-item"><strong>Industry:</strong> <span className="glance-link">Aluminium Manufacturing</span></div>
+                <div className="glance-item"><strong>Product Family:</strong> <span className="glance-link">Aluminium Powders</span></div>
+                <div className="glance-item"><strong>Services:</strong> <span className="glance-link">CBAM</span></div>
+                <div className="glance-item"><strong>Region:</strong> <span className="glance-link">Tamil Nadu</span></div>
               </div>
             </div>
           </div>

@@ -83,12 +83,12 @@ export default function Services() {
 
               <div className="srv-stat-grid text-center" style={{ marginBottom: '80px' }}>
                 <div className="card stat-item">
-                  <div className="srv-stat-num">300+</div>
-                  <div className="srv-stat-label">Companies Supported</div>
+                  <div className="srv-stat-num">7+</div>
+                  <div className="srv-stat-label">Sector Covered</div>
                 </div>
                 <div className="card stat-item">
-                  <div className="srv-stat-num">1000+</div>
-                  <div className="srv-stat-label">CBAM Reports Managed</div>
+                  <div className="srv-stat-num">30+</div>
+                  <div className="srv-stat-label">Report Frame Works</div>
                 </div>
                 <div className="card stat-item">
                   <div className="srv-stat-num">50+</div>
@@ -114,11 +114,11 @@ export default function Services() {
                     ].map(item => (
                       <div key={item.title} className="cbam-feature-grid">
                         <div style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
-                           <CheckIcon style={{ flexShrink: 0, marginTop: '4px', color: 'var(--clr-accent)', width: '24px', height: '24px' }} /> 
-                           <strong style={{ fontSize: '1.1rem', lineHeight: '1.4' }}>{item.title}</strong>
+                          <CheckIcon style={{ flexShrink: 0, marginTop: '4px', color: 'var(--clr-accent)', width: '24px', height: '24px' }} />
+                          <strong style={{ fontSize: '1.1rem', lineHeight: '1.4' }}>{item.title}</strong>
                         </div>
                         <div style={{ fontSize: '1.1rem', lineHeight: '1.5' }}>
-                           {item.desc}
+                          {item.desc}
                         </div>
                       </div>
                     ))}
@@ -193,8 +193,8 @@ export default function Services() {
 
               <div className="srv-stat-grid text-center" style={{ marginBottom: '80px' }}>
                 <div className="card stat-item">
-                  <div className="srv-stat-num">100+</div>
-                  <div className="srv-stat-label">Assessments Managed</div>
+                  <div className="srv-stat-num">7+</div>
+                  <div className="srv-stat-label">Sector Covered</div>
                 </div>
                 <div className="card stat-item">
                   <div className="srv-stat-num" style={{ color: 'var(--clr-green-deep)' }}>+20–40</div>

@@ -90,7 +90,7 @@ export default function EmissionLeakageBlog() {
         <script type="application/ld+json">{JSON.stringify(blogSchemaCode)}</script>
       </Helmet>
 
-      <main className="blog-detail-page bg-dark-2">
+      <main className="blog-detail-page bg-dark-2" style={{ paddingBottom: '100px' }}>
         <div className="blog-container container">
           <article className="blog-content fade-up visible">
             <header className="blog-header">
