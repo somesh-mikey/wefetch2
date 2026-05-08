@@ -1,0 +1,25 @@
+import { renderToString } from 'react-dom/server';
+import { StaticRouter } from 'react-router-dom/server';
+import { HelmetProvider } from 'react-helmet-async';
+import App from './App.jsx';
+
+export function render(url) {
+  const helmetContext = {};
+  const html = renderToString(
+    <HelmetProvider context={helmetContext}>
+      <StaticRouter location={url}>
+        <App />
+      </StaticRouter>
+    </HelmetProvider>
+  );
+
+  const { helmet } = helmetContext;
+  const head = [
+    helmet?.title,
+    helmet?.meta,
+    helmet?.link,
+    helmet?.script,
+  ].filter(Boolean).map((chunk) => chunk.toString()).join('');
+
+  return { html, head };
+}

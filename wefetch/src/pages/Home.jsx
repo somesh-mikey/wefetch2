@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import './Home.css';
 import {
@@ -25,7 +26,26 @@ function Section({ children, className = '', id = '' }) {
 
 export default function Home() {
   return (
-    <main className="home">
+    <>
+      <Helmet>
+        <title>CBAM & ESG Consulting Services | Sustainability Solutions for Exporters - Wefetch Technologies</title>
+        <meta
+          name="description"
+          content="Wefetch Technologies helps exporters navigate CBAM, ESG compliance, and sustainability reporting. Ensure EU market readiness with expert carbon and regulatory solutions."
+        />
+        <meta
+          property="og:title"
+          content="CBAM & ESG Consulting Services | Sustainability Solutions for Exporters - Wefetch Technologies"
+        />
+        <meta
+          property="og:description"
+          content="Wefetch Technologies helps exporters navigate CBAM, ESG compliance, and sustainability reporting. Ensure EU market readiness with expert carbon and regulatory solutions."
+        />
+        <meta property="og:url" content="https://www.wefetch.tech/" />
+        <meta property="og:type" content="website" />
+      </Helmet>
+
+      <main className="home">
 
       {/* ===== HERO ===== */}
       <Section className="hero">
@@ -251,6 +271,7 @@ export default function Home() {
         </div>
       </Section>
 
-    </main>
+      </main>
+    </>
   );
 }
