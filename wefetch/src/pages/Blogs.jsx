@@ -48,6 +48,26 @@ export default function Blogs() {
                 </Link>
               </div>
             </div>
+
+            <div className="plan-card" style={{ textAlign: 'left', display: 'flex', flexDirection: 'column', padding: 0, overflow: 'hidden' }}>
+              <img 
+                src="/images/blog2_banner.jpg" 
+                alt="CBAM Banner" 
+                style={{ width: '100%', height: '220px', objectFit: 'cover' }} 
+              />
+              <div style={{ padding: '2rem', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
+                <h3 style={{ marginBottom: '1rem', marginTop: 0, fontSize: '1.5rem', lineHeight: 1.3 }}>Carbon Border Adjustment Mechanism (CBAM): A Solution to Emission Leakage</h3>
+                <p className="plan-desc" style={{ flexGrow: 1, marginBottom: '2rem', fontSize: '1.05rem' }}>
+                  CBAM puts a carbon cost on imports so goods entering the EU face similar environmental standards as domestic products, reducing incentives to shift emissions abroad.
+                </p>
+                <Link 
+                  to="/cbam-solution-emission-leakage" 
+                  style={{ fontWeight: 'bold', color: 'var(--clr-accent)', textDecoration: 'none', textTransform: 'uppercase', letterSpacing: '1px', fontSize: '0.95rem' }}
+                >
+                  Read More »
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </Section>

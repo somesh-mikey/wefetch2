@@ -19,6 +19,7 @@ const routes = [
   '/tools',
   '/blogs',
   '/emission-leakage-meaning-causes-examples-prevention',
+  '/cbam-solution-emission-leakage',
   '/contact',
 ];
 

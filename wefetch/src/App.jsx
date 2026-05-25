@@ -10,6 +10,7 @@ import Pricing from './pages/Pricing';
 import Tools from './pages/Tools';
 import Blogs from './pages/Blogs';
 import EmissionLeakageBlog from './pages/EmissionLeakageBlog';
+import CbamBlog from './pages/CbamBlog';
 import Contact from './pages/Contact';
 
 // Scroll to top on route change
@@ -33,6 +34,7 @@ export default function App() {
         <Route path="/tools" element={<Tools />} />
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/emission-leakage-meaning-causes-examples-prevention" element={<EmissionLeakageBlog />} />
+        <Route path="/cbam-solution-emission-leakage" element={<CbamBlog />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
       <Footer />
